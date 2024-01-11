@@ -5,8 +5,11 @@ import NavbarC from "../Components/NavbarC";
 import FooterC from "../Components/FooterC";
 import RegisterPage from "../pages/RegisterPage";
 import Contacto from "../pages/Contacto";
-import IniciarSesion from "../pages/IniciarSesion";
 import SobreNosotros from "../pages/SobreNosotros";
+import ProductPage from "../pages/ProductPage";
+import LoginPage from "../pages/LoginPage";
+import UserPage from "../pages/UserPage";
+import AdminPage from "../pages/AdminPage";
 
 const RoutesViews = () => {
   return (
@@ -14,11 +17,14 @@ const RoutesViews = () => {
     <NavbarC />
     <Routes>
         <Route path="/" element={<HomePage />}/>
-        <Route path="/contacto" element={<Contacto />}/>
-        <Route path="/sobre nosotros" element={<SobreNosotros />}/>
-        <Route path="/iniciar sesion" element={<IniciarSesion />}/>
         <Route path="/register" element={<RegisterPage />}/>
-        <Route path="*" element={<ErrorPage />}/>
+        <Route path="/login" element={<LoginPage />}/>
+        <Route path="/user" element={<UserPage />}/>
+        <Route path="/admin" element={<AdminPage />}/>
+        <Route path="/contacto" element={<Contacto />}/>
+        <Route path="/product/:id" element={<ProductPage />}/>
+        <Route path="/sobre nosotros" element={<SobreNosotros />}/>
+       <Route path="*" element={<ErrorPage />}/>
     </Routes>
     <FooterC />
     </>
