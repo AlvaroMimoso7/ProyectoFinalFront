@@ -11,16 +11,16 @@ const SobreNosotros = () => {
   <div className="row">
     <div className="col-sm-12 col-md-6 col-lg-4">
     <div className='body-1 mt-3'>
-  <img src="https://tse3.mm.bing.net/th?id=OIP.w2McZSq-EYWxh02iSvC3xwHaHa&pid=Api&P=0&h=220"  className='circular-name' width='100'></img>
+  <img src="../src/img/alvaro.jpg"  className='circular-name' width='100'></img>
 <h5 className="text-white">Alvaro Mimoso</h5>
-<p className="text-white">“Cuando te pasas toda tu vida persiguiendo un objetivo y lo condicionas todo por ello, una vez que lo consigues, las cosas dejan de estar igual.” </p>
+<p className="text-white">Mi nombre es Albaro  Martin Mimoso, tengo 25  años ,soy estudiante de Educación Física me gusta el fútbol y también me interesa todo lo relacionado con computación.. </p>
 </div> 
     </div>
 <div className="col-sm-12 col-md-6 col-lg-4">
 <div className='body-1 mt-3'>
-  <img src="https://tse3.mm.bing.net/th?id=OIP.w2McZSq-EYWxh02iSvC3xwHaHa&pid=Api&P=0&h=220"  className='circular-name'   width='100'></img>
+  <img src="../src/img/benjamin.jpg"  className='circular-name'   width='100'></img>
 <h5 className="text-white">Benjamin Juarez</h5>
-<p className="text-white">“Los líderes conscientes se interesan más por aprender, que en demostrar que tienen razón.” </p>
+<p className="text-white">Soy Benjamin Juarez,apasionado profesor de Educación Física.Amante del fútbol y entusiasta del deporte,mi objetivo es inspirar a mis alumnos a través del ejercicio y el entrenamiento... </p>
 </div> 
 </div>
 <div className="col-sm-12 col-md-6 col-lg-4">
@@ -32,16 +32,16 @@ const SobreNosotros = () => {
 </div>
 <div className="col-sm-12 col-md-6 col-lg-4">
 <div className='body-1 mt-3'>
-  <img src="https://tse3.mm.bing.net/th?id=OIP.w2McZSq-EYWxh02iSvC3xwHaHa&pid=Api&P=0&h=220"  className='circular-name'     width='100'></img>
+  <img src="../src/img/nacho.jpg"  className='circular-name'     width='100'></img>
 <h5 className="text-white">nacho</h5>
 <p className="text-white">“Lo mental hace la diferencia para dos jugadores con el mismo potencial. Son importantes ahí las capacidades blandas y la inteligencia emocional en el grupo…” </p>
 </div> 
 </div>
 <div className="col-sm-12 col-md-6 col-lg-4">
 <div className='body-1 mt-3'>
-  <img src="https://tse3.mm.bing.net/th?id=OIP.w2McZSq-EYWxh02iSvC3xwHaHa&pid=Api&P=0&h=220"  className='circular-name'     width='100'></img>
+  <img src="../src/img/emilse.jpg"  className='circular-name'     width='100'></img>
 <h5 className="text-white">Emilse Diaz</h5>
-<p className="text-white">"Un entrenador tiene que ser alguien que te enseñe las habilidades adecuadas, que te enseñe las lecciones vitales adecuadas y cree un entorno que sea saludable para el aprendizaje.”</p>
+<p className="text-white">Mi nombre es Emilse Diaz tengo 25 años soy peluquera también vendo productos capilares ,me gusta mucho lo que es computación y el trabajo en equipo. </p>
 </div> 
 </div>
   </div>
