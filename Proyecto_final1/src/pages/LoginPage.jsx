@@ -29,11 +29,11 @@ const LoginPage = () => {
     if (data.role === "user") {
       location.href = "user";
       sessionStorage.setItem("token", data.token);
-      sessionStorage.setItem("role", data.token);
+      sessionStorage.setItem("role", data.role);
     } else {
       sessionStorage.setItem("token", data.token);
-      sessionStorage.setItem("role", data.token);
-      location.href = "admin";
+      sessionStorage.setItem("role", data.role);
+      location.href = "/admin";
     }
   };
   return (

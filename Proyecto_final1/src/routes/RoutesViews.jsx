@@ -10,6 +10,8 @@ import ProductPage from "../pages/ProductPage";
 import LoginPage from "../pages/LoginPage";
 import UserPage from "../pages/UserPage";
 import AdminPage from "../pages/AdminPage";
+import AdminUserPage from "../pages/AdminUserPage";
+import AdminProductPage from "../pages/AdminProductPage";
 
 const RoutesViews = () => {
   return (
@@ -21,9 +23,11 @@ const RoutesViews = () => {
         <Route path="/login" element={<LoginPage />}/>
         <Route path="/user" element={<UserPage />}/>
         <Route path="/admin" element={<AdminPage />}/>
+        <Route path="/admin-users" element={<AdminUserPage />}/>
+        <Route path="/admin-products" element={<AdminProductPage />}/>
         <Route path="/contacto" element={<Contacto />}/>
         <Route path="/product/:id" element={<ProductPage />}/>
-        <Route path="/sobre nosotros" element={<SobreNosotros />}/>
+        <Route path="/sobre-nosotros" element={<SobreNosotros />}/>
        <Route path="*" element={<ErrorPage />}/>
     </Routes>
     <FooterC />
