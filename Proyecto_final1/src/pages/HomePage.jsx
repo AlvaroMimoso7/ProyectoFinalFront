@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import ImagenesC from "../Components/ImagenesC";
 import { Col, Container, Row } from "react-bootstrap";
 import Cards from "../Components/CardsC";
+import CarrouselC from "../Components/CarrouselC";
+import "../css/HomePage.css"
+
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -15,8 +18,8 @@ const HomePage = () => {
     console.log(products);
   }, []);
   return (
-    <>
-      <ImagenesC
+    <> <div className="contenedor">
+ <ImagenesC
         url={
           "https://img.freepik.com/fotos-premium/gimnasio-arafed-bandas-rodadura-maquinas-gran-sala-generativa-ai_955884-9931.jpg"
         }
@@ -38,7 +41,14 @@ const HomePage = () => {
             </Col>
           ))}
         </Row>
-      </Container>
+      </Container >
+     
+    <Container className="mainContainer">
+    <CarrouselC/>
+
+    </Container>
+    </div>
+     
     </>
   );
 };
