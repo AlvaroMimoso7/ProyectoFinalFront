@@ -2,3 +2,6 @@
     background: rgb(9,121,41);
 background: linear-gradient(90deg, rgba(9,121,41,1) 0%, rgba(26,255,0,1) 52%);
 }
+.footer{
+    position: fixed;
+}
