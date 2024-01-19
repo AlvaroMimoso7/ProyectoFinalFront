@@ -1,0 +1,23 @@
+.circular-name{
+    position: relative;
+    width: 304px;
+    height: 304px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 3px solid rgb(86, 255, 123);
+
+}
+.circular-square img{
+    width: 100%;
+    height: auto;
+}
+.contenedor-header{
+    min-height: 100vh;
+    background-color:black;
+    background-size: cover;
+}
+.text-main{
+   color: rgb(127, 255, 170);
+   text-align: center;
+    
+}
