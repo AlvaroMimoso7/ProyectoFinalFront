@@ -29,11 +29,13 @@ console.log(sendFormLogin);
     if (sendFormLogin.data.role === "admin") {
       sessionStorage.setItem("token", sendFormLogin.data.token);
       sessionStorage.setItem("role", sendFormLogin.data.role);
+      sessionStorage.setItem("idUsuario", sendFormLogin.data.idUsuario);
       location.href = "/admin";
     } else {
       location.href = "user";
       sessionStorage.setItem("token", sendFormLogin.data.token);
       sessionStorage.setItem("role", sendFormLogin.data.role);
+      sessionStorage.setItem("idUsuario", sendFormLogin.data.idUsuario);
     }
   };
   return (

@@ -16,8 +16,10 @@ const NavbarC = () => {
     titulo: "",
     precio: 0,
     codigo: "",
-    imagen: "",
   });
+
+  const [imagen, setImagen] = useState({});
+
   const token = sessionStorage.getItem("token") || "";
   const role = sessionStorage.getItem("role") || "";
 
@@ -36,11 +38,15 @@ const NavbarC = () => {
     setNewProduct({ ...newProduct, [ev.target.name]: ev.target.value });
   };
 
+  const handleChangeImagen = (ev) => {
+    setImagen(ev.target.files[0]);
+  };
+
   const handleClick = async (ev) => {
     try {
       ev.preventDefault();
-      const { titulo, precio, codigo, imagen } = newProduct;
-      if (!titulo || !precio || !codigo || !imagen) {
+      const { titulo, precio, codigo } = newProduct;
+      if (!titulo || !precio || !codigo) {
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -48,19 +54,22 @@ const NavbarC = () => {
         });
       } else {
         const data = new FormData();
-        data.append("imagen", newProduct.imagen);
-        console.log(data);
-        // const createProd = await clienteAxios.post(
-        //   "/products",
-        //   newProduct,
-        //   configHeaders
-        // );
-        // if (createProd.status === 201) {
-        //   Swal.fire({
-        //     title: "Producto creado exitosame!",
-        //     icon: "success",
-        //   });
-        // }
+        data.append('titulo', titulo)
+        data.append('precio', precio)
+        data.append('codigo', codigo)
+        data.append('imagen', imagen)
+        
+        const createProd = await clienteAxios.post(
+          "/products",
+          data,
+          configHeaders
+        );
+        if (createProd.status === 201) {
+          Swal.fire({
+            title: "Producto creado exitosame!",
+            icon: "success",
+          });
+        }
       }
     } catch (error) {
       console.log(error);
@@ -106,8 +115,8 @@ const NavbarC = () => {
                 <>
                   <Nav.Link href="/sobre nosotros">Sobre nosotros</Nav.Link>
                   <Nav.Link href="#link">Contacto</Nav.Link>
-                  <Nav.Link href="#link">Favoritos</Nav.Link>
-                  <Nav.Link href="#link">Carrito</Nav.Link>
+                  <Nav.Link href="/fav">Favoritos</Nav.Link>
+                  <Nav.Link href="/cart">Carrito</Nav.Link>
                 </>
               ) : token && role === "admin" ? (
                 <>
@@ -164,8 +173,7 @@ const NavbarC = () => {
                           <Form.Control
                             type="file"
                             value={newProduct.imagen}
-                            onChange={handleChange}
-                            name="imagen"
+                            onChange={handleChangeImagen}
                           />
                         </Form.Group>
                         <div className="d-flex justify-content-center">

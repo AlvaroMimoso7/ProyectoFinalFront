@@ -10,43 +10,73 @@ const ProductPage = () => {
   const token = sessionStorage.getItem("token");
 
   const getOneProduct = async () => {
-    const getOneProduct = await clienteAxios.get(`/products/${params.id}`)
-    setProduct(getOneProduct.data.getProduct)
+    const getOneProduct = await clienteAxios.get(`/products/${params.id}`);
+    setProduct(getOneProduct.data.getProduct);
   };
 
-  const addProdCart = () => {
-    if (!token) {
-      Swal.fire({
-        icon: "error",
-        title: "Para añadir este producto al carrito, debes Iniciar Sesion!",
-        text: "Seras redirigido al Iniciar Sesion!",
-      });
-      setTimeout(() => {
-        location.href = "/login";
-      }, 4000);
-    } else {
-      Swal.fire({
-        title: "Prodcuto Añadido al Carrito!",
-        icon: "success",
-      });
+  const addProdCart = async () => {
+    try {
+      if (!token) {
+        Swal.fire({
+          icon: "error",
+          title: "Para añadir este producto al carrito, debes Iniciar Sesion!",
+          text: "Seras redirigido al Iniciar Sesion!",
+        });
+        setTimeout(() => {
+          location.href = "/login";
+        }, 4000);
+      } else {
+        const usuario = await clienteAxios.get(
+          `/users/${sessionStorage.getItem("idUsuario")}`
+        );
+
+        if (usuario.status === 200) {
+          const addProd = await clienteAxios.post(
+            `/products/cart/${usuario.data.getUser._id}/${params.id}/${usuario.data.getUser.idCarrito}`
+          );
+          if (addProd.status === 200) {
+            Swal.fire({
+              title: "Producto Añadido al Carrito!",
+              icon: "success",
+            });
+          }
+        }
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
-  const addFavCart = () => {
-    if (!token) {
-      Swal.fire({
-        icon: "error",
-        title: "Para añadir este producto a favoritos, debes Iniciar Sesion!",
-        text: "Seras redirigido al Iniciar Sesion!",
-      });
-      setTimeout(() => {
-        location.href = "/login";
-      }, 4000);
-    } else {
-      Swal.fire({
-        title: "Prodcuto Añadido a Favoritos!",
-        icon: "success",
-      });
+  const addFavCart = async () => {
+    try {
+      if (!token) {
+        Swal.fire({
+          icon: "error",
+          title: "Para añadir este producto a favoritos, debes Iniciar Sesion!",
+          text: "Seras redirigido al Iniciar Sesion!",
+        });
+        setTimeout(() => {
+          location.href = "/login";
+        }, 4000);
+      } else {
+        const usuario = await clienteAxios.get(
+          `/users/${sessionStorage.getItem("idUsuario")}`
+        );
+  
+        if (usuario.status === 200) {
+          const addProd = await clienteAxios.post(
+            `/products/fav/${usuario.data.getUser._id}/${params.id}/${usuario.data.getUser.idFavoritos}`
+          );
+          if (addProd.status === 200) {
+            Swal.fire({
+              title: "Producto Añadido a Favoritos!",
+              icon: "success",
+            });
+          }
+        }
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   useEffect(() => {
@@ -67,7 +97,9 @@ const ProductPage = () => {
               <Button variant="primary" className="mx-2" onClick={addProdCart}>
                 Añadir al Carrito
               </Button>
-              <Button variant="warning" onClick={addFavCart}>Añadir a Favoritos</Button>
+              <Button variant="warning" onClick={addFavCart}>
+                Añadir a Favoritos
+              </Button>
             </div>
           </Col>
         </Row>
