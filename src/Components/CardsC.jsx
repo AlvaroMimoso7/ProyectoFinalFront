@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
+import '../css/CardsC.css' 
 
 const Cards = ({ url, titulo, precio, codigo, idProduct, idPage }) => {
   const deleteProdFav = async () =>{
@@ -21,7 +22,7 @@ const Cards = ({ url, titulo, precio, codigo, idProduct, idPage }) => {
   return (
     <>
       <Card style={{width:'18rem'}}>
-        <Card.Img variant="top" src={url} />
+        <Card.Img variant="top" src={url} className="object-fit-cover" />
         <Card.Body>
           <Card.Title>{titulo}</Card.Title>
           <Card.Text>{precio}</Card.Text>
