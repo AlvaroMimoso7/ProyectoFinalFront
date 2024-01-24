@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import clienteAxios from "../helpers/clientAxios";
 
 const ProductPage = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const token = sessionStorage.getItem("token");
 
@@ -23,7 +24,7 @@ const ProductPage = () => {
           text: "Seras redirigido al Iniciar Sesion!",
         });
         setTimeout(() => {
-          location.href = "/login";
+          navigate("/login");
         }, 4000);
       } else {
         const usuario = await clienteAxios.get(
@@ -32,7 +33,7 @@ const ProductPage = () => {
 
         if (usuario.status === 200) {
           const addProd = await clienteAxios.post(
-            `/products/cart/${usuario.data.getUser._id}/${params.id}/${usuario.data.getUser.idCarrito}`
+            `/products/cart/${params.id}`
           );
           if (addProd.status === 200) {
             Swal.fire({
@@ -44,6 +45,12 @@ const ProductPage = () => {
       }
     } catch (error) {
       console.log(error);
+      if (error.response.status === 400) {
+        Swal.fire({
+          icon: "error",
+          title: "Producto ya existe en el carrito",
+        });
+      }
     }
   };
 
@@ -56,17 +63,15 @@ const ProductPage = () => {
           text: "Seras redirigido al Iniciar Sesion!",
         });
         setTimeout(() => {
-          location.href = "/login";
+          navigate("/login");
         }, 4000);
       } else {
         const usuario = await clienteAxios.get(
           `/users/${sessionStorage.getItem("idUsuario")}`
         );
-  
+
         if (usuario.status === 200) {
-          const addProd = await clienteAxios.post(
-            `/products/fav/${usuario.data.getUser._id}/${params.id}/${usuario.data.getUser.idFavoritos}`
-          );
+          const addProd = await clienteAxios.post(`/products/fav/${params.id}`);
           if (addProd.status === 200) {
             Swal.fire({
               title: "Producto Añadido a Favoritos!",
@@ -76,7 +81,12 @@ const ProductPage = () => {
         }
       }
     } catch (error) {
-      console.log(error);
+      if (error.response.status === 400) {
+        Swal.fire({
+          icon: "error",
+          title: "Producto ya existe en favoritos",
+        });
+      }
     }
   };
   useEffect(() => {

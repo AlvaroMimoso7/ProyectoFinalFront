@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ImagenesC from "../Components/ImagenesC";
-import { Col, Container, Row, Carousel } from "react-bootstrap";
+import { Col, Container, Row} from "react-bootstrap";
 import Cards from "../Components/CardsC";
 import clienteAxios from "../helpers/clientAxios";
 
@@ -38,10 +38,6 @@ const HomePage = () => {
               </Col>
             ))}
           </Row>
-        </Container>
-
-        <Container className="mainContainer">
-          <Carousel /> 
         </Container>
       </div>
     </>

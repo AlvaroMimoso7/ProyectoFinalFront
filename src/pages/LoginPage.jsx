@@ -3,8 +3,11 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
     user: "",
     pass: "",
@@ -24,18 +27,32 @@ const LoginPage = () => {
       },
       configHeaders
     );
-console.log(sendFormLogin);
+    console.log(sendFormLogin);
 
     if (sendFormLogin.data.role === "admin") {
       sessionStorage.setItem("token", sendFormLogin.data.token);
       sessionStorage.setItem("role", sendFormLogin.data.role);
       sessionStorage.setItem("idUsuario", sendFormLogin.data.idUsuario);
-      location.href = "/admin";
+      Swal.fire({
+        icon: "success",
+        title: "Exitos iniciaste sesion como administrador con exito!",
+        text: "Felicitaciones!",
+      });
+      setTimeout(() => {
+        navigate("/admin");
+      }, 3000);
     } else {
-      location.href = "user";
       sessionStorage.setItem("token", sendFormLogin.data.token);
       sessionStorage.setItem("role", sendFormLogin.data.role);
       sessionStorage.setItem("idUsuario", sendFormLogin.data.idUsuario);
+      Swal.fire({
+        icon: "success",
+        title: "Exitos iniciaste sesion como Usuario con exito!",
+        text: "Felicitaciones!",
+      });
+      setTimeout(() => {
+        navigate("/user");
+      }, 3000);
     }
   };
   return (

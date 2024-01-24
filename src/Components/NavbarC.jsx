@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "../css/NavbarC.css";
 import ImagenesC from "./ImagenesC";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
@@ -11,6 +11,7 @@ import Form from "react-bootstrap/Form";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
 
 const NavbarC = () => {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [newProduct, setNewProduct] = useState({
     titulo: "",
@@ -29,9 +30,8 @@ const NavbarC = () => {
   const singOut = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("role");
-    setTimeout(() => {
-      location.href = "/";
-    }, 1000);
+    sessionStorage.removeItem("idUsuario");
+    navigate("/");
   };
 
   const handleChange = (ev) => {
@@ -54,11 +54,11 @@ const NavbarC = () => {
         });
       } else {
         const data = new FormData();
-        data.append('titulo', titulo)
-        data.append('precio', precio)
-        data.append('codigo', codigo)
-        data.append('imagen', imagen)
-        
+        data.append("titulo", titulo);
+        data.append("precio", precio);
+        data.append("codigo", codigo);
+        data.append("imagen", imagen);
+
         const createProd = await clienteAxios.post(
           "/products",
           data,
@@ -100,8 +100,9 @@ const NavbarC = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link
-                href={
+              <NavLink
+                className={"nav-link"}
+                to={
                   token && role === "user"
                     ? "/user"
                     : token && role === "admin"
@@ -110,18 +111,30 @@ const NavbarC = () => {
                 }
               >
                 Inicio
-              </Nav.Link>
+              </NavLink>
               {token && role === "user" ? (
                 <>
-                  <Nav.Link href="/sobre nosotros">Sobre nosotros</Nav.Link>
-                  <Nav.Link href="#link">Contacto</Nav.Link>
-                  <Nav.Link href="/fav">Favoritos</Nav.Link>
-                  <Nav.Link href="/cart">Carrito</Nav.Link>
+                  <NavLink to="/sobre nosotros" className={"nav-link"}>
+                    Sobre nosotros
+                  </NavLink>
+                  <NavLink to="#link" className={"nav-link"}>
+                    Contacto
+                  </NavLink>
+                  <NavLink to="/fav" className={"nav-link"}>
+                    Favoritos
+                  </NavLink>
+                  <NavLink to="/cart" className={"nav-link"}>
+                    Carrito
+                  </NavLink>
                 </>
               ) : token && role === "admin" ? (
                 <>
-                  <Nav.Link href="/admin-users">Usuarios</Nav.Link>
-                  <Nav.Link href="/admin-products">Productos</Nav.Link>
+                  <NavLink to="/admin-users" className={"nav-link"}>
+                    Usuarios
+                  </NavLink>
+                  <NavLink to="/admin-products" className={"nav-link"}>
+                    Productos
+                  </NavLink>
                   <Button
                     variant="primary"
                     onClick={handleShow}
@@ -191,21 +204,29 @@ const NavbarC = () => {
                 </>
               ) : (
                 <>
-                  <Nav.Link href="/sobre-nosotros">Sobre nosotros</Nav.Link>
-                  <Nav.Link href="#link">Contacto</Nav.Link>
+                  <NavLink to="/sobre-nosotros" className={"nav-link"}>
+                    Sobre nosotros
+                  </NavLink>
+                  <NavLink to="#link" className={"nav-link"}>
+                    Contacto
+                  </NavLink>
                 </>
               )}
             </Nav>
             {token && role ? (
               <Nav className="ms-auto">
-                <Nav.Link href="#" onClick={singOut}>
+                <NavLink to="#" onClick={singOut} className={"nav-link"}>
                   Cerrar Sesion
-                </Nav.Link>
+                </NavLink>
               </Nav>
             ) : (
               <Nav className="ms-auto">
-                <Nav.Link href="/login">Iniciar sesion</Nav.Link>
-                <Nav.Link href="/register">Registrarse</Nav.Link>
+                <NavLink to="/login" className={"nav-link"}>
+                  Iniciar sesion
+                </NavLink>
+                <NavLink to="/register" className={"nav-link"}>
+                  Registrarse
+                </NavLink>
               </Nav>
             )}
           </Navbar.Collapse>
