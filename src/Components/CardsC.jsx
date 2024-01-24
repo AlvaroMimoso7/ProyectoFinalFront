@@ -1,10 +1,22 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+import clienteAxios, { configHeaders } from "../helpers/clientAxios";
 
 const Cards = ({ url, titulo, precio, codigo, idProduct, idPage }) => {
-  const deleteProdFav = () =>{
-    console.log('borrando');
+  const deleteProdFav = async () =>{
+    try {
+      const data = await clienteAxios.delete(`/favs/${idProduct}`, configHeaders)
+      if (data.status === 200) {
+        Swal.fire({
+          title: "Tu producto ha sido eliminado!",
+          text: "You clicked the button!",
+          icon: "success"
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <>

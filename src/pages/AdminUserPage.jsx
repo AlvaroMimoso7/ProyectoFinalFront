@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Swal from "sweetalert2";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
 
+
 const AdminUserPage = () => {
   const [users, setUsers] = useState([]);
   const [show, setShow] = useState(false);
@@ -18,9 +19,9 @@ const AdminUserPage = () => {
     setUserStates(userFind);
   };
 
-  const getAllUsers = async () => {
+  const getAllUsers =useCallback (async () => {
     try {
-      const getUsers = await clienteAxios.get("/users");
+      const getUsers = await clienteAxios.get("/users", configHeaders);
       setUsers(getUsers.data.getAllUsers);
     } catch (error) {
       Swal.fire({
@@ -29,7 +30,7 @@ const AdminUserPage = () => {
         text: "Tus productos no pueden encontrarse!",
       });
     }
-  };
+  });
 
   const handleChange = (ev) => {
     setUserStates({ ...userStates, [ev.target.name]: ev.target.value });

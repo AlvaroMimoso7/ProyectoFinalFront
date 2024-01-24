@@ -9,13 +9,14 @@ const AdminProductPage = () => {
   const [products, setProducts] = useState([]);
   const [show, setShow] = useState(false);
   const [productStates, setProductStates] = useState({});
+  const [imagen, setImagen] = useState({})
   
 
   const handleClose = () => setShow(false);
   const handleShow = (idProd) => {
     setShow(true);
     const productFind = products.find((prod) => prod._id === idProd);
-    setProducts(productFind);
+    setProductStates(productFind);
   };
 
   const getProducts = async () => {
@@ -36,14 +37,15 @@ const AdminProductPage = () => {
   const handleClick = async (ev) => {
     try {
       ev.preventDefault();
+const data = new FormData()
+data.append('titulo', productStates.titulo)
+data.append('precio', productStates.precio)
+data.append('codigo', productStates.codigo)
+data.append('imagen', imagen)
+
       const updateProd = await clienteAxios.put(
         `/products/${productStates._id}`,
-        {
-          titulo: productStates.titulo,
-          precio: productStates.precio,
-          codigo: productStates.codigo,
-          imagen: productStates.imagen,
-        },
+        data,
         configHeaders
       );
       if (updateProd.status === 200) {
@@ -174,9 +176,7 @@ const AdminProductPage = () => {
                           <Form.Label>Imagen</Form.Label>
                           <Form.Control
                             type="text"
-                            value={productStates.imagen}
-                            name="imagen"
-                            onChange={handleChange}
+                            onChange={(ev)=>setImagen(ev.target.files[0])}
                           />
                         </Form.Group>
 

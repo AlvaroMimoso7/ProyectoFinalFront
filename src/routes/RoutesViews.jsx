@@ -14,6 +14,7 @@ import AdminUserPage from "../pages/AdminUserPage";
 import AdminProductPage from "../pages/AdminProductPage";
 import FavPages from "../pages/FavPages";
 import CartPage from "../pages/CartPage";
+import PrivatesRoutes from "../Components/PrivatesRoutes";
 
 const RoutesViews = () => {
   return (
@@ -23,12 +24,39 @@ const RoutesViews = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/user" element={<UserPage />} />
-        <Route path="/admin" element={<AdminPage />} />
-        <Route path="/admin-users" element={<AdminUserPage />} />
-        <Route path="/admin-products" element={<AdminProductPage />} />
-        <Route path="/fav" element={<FavPages />} />
-        <Route path="/cart" element={<CartPage />} />
+        <Route path="/user" element={
+          <PrivatesRoutes role='user'>
+            <UserPage />
+          </PrivatesRoutes>
+        } />
+        <Route path="/admin" element={
+          <PrivatesRoutes role='admin'>
+            <AdminPage />
+          </PrivatesRoutes>
+        } />
+        <Route
+          path="/admin-users"
+          element={
+            <PrivatesRoutes role='admin'>
+              <AdminUserPage />
+            </PrivatesRoutes>
+          }
+        />
+        <Route path="/admin-products" element={
+          <PrivatesRoutes>
+            <AdminProductPage />
+          </PrivatesRoutes>
+        } />
+        <Route path="/fav" element={
+          <PrivatesRoutes role='user'>
+            <FavPages />
+          </PrivatesRoutes>
+        } />
+        <Route path="/cart" element={
+          <PrivatesRoutes role='user'>
+            <CartPage />
+          </PrivatesRoutes>
+        } />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/sobre-nosotros" element={<SobreNosotros />} />

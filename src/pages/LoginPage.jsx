@@ -30,9 +30,12 @@ const LoginPage = () => {
     console.log(sendFormLogin);
 
     if (sendFormLogin.data.role === "admin") {
-      sessionStorage.setItem("token", sendFormLogin.data.token);
-      sessionStorage.setItem("role", sendFormLogin.data.role);
-      sessionStorage.setItem("idUsuario", sendFormLogin.data.idUsuario);
+      sessionStorage.setItem("token", JSON.stringify(sendFormLogin.data.token));
+      sessionStorage.setItem("role", JSON.stringify(sendFormLogin.data.role));
+      sessionStorage.setItem(
+        "idUsuario",
+        JSON.stringify(sendFormLogin.data.idUsuario)
+      );
       Swal.fire({
         icon: "success",
         title: "Exitos iniciaste sesion como administrador con exito!",
@@ -42,9 +45,12 @@ const LoginPage = () => {
         navigate("/admin");
       }, 3000);
     } else {
-      sessionStorage.setItem("token", sendFormLogin.data.token);
-      sessionStorage.setItem("role", sendFormLogin.data.role);
-      sessionStorage.setItem("idUsuario", sendFormLogin.data.idUsuario);
+      sessionStorage.setItem("token", JSON.stringify(sendFormLogin.data.token));
+      sessionStorage.setItem("role", JSON.stringify(sendFormLogin.data.role));
+      sessionStorage.setItem(
+        "idUsuario",
+        JSON.stringify(sendFormLogin.data.idUsuario)
+      );
       Swal.fire({
         icon: "success",
         title: "Exitos iniciaste sesion como Usuario con exito!",

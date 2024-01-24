@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-import clienteAxios from "../helpers/clientAxios";
+import clienteAxios, { configHeaders } from "../helpers/clientAxios";
 
 const ProductPage = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
-  const token = sessionStorage.getItem("token");
+  const token = JSON.parse(sessionStorage.getItem("token"));
 
   const getOneProduct = async () => {
     const getOneProduct = await clienteAxios.get(`/products/${params.id}`);
@@ -33,7 +33,9 @@ const ProductPage = () => {
 
         if (usuario.status === 200) {
           const addProd = await clienteAxios.post(
-            `/products/cart/${params.id}`
+            `/products/cart/${params.id}`,
+            {},
+            configHeaders
           );
           if (addProd.status === 200) {
             Swal.fire({
@@ -67,11 +69,15 @@ const ProductPage = () => {
         }, 4000);
       } else {
         const usuario = await clienteAxios.get(
-          `/users/${sessionStorage.getItem("idUsuario")}`
+          `/users/${sessionStorage.getItem("idUsuario")}`, configHeaders
         );
 
         if (usuario.status === 200) {
-          const addProd = await clienteAxios.post(`/products/fav/${params.id}`);
+          const addProd = await clienteAxios.post(
+            `/products/fav/${params.id}`,
+            {},
+            configHeaders
+          );
           if (addProd.status === 200) {
             Swal.fire({
               title: "Producto Añadido a Favoritos!",
