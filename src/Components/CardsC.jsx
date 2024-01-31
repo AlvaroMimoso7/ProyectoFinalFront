@@ -5,22 +5,24 @@ import clienteAxios, { configHeaders } from "../helpers/clientAxios";
 import Swal from "sweetalert2";
 import "../css/CardsC.css";
 
-const Cards = ({ url, titulo, precio, codigo, idProduct, idPage }) => {
+
+const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage }) => {
   const deleteProdFav = async () => {
     try {
       const data = await clienteAxios.delete(
         `/favs/${idProduct}`,
-        configHeaders
+        configHeaders()
       );
       if (data.status === 200) {
         Swal.fire({
-          title: "Tu producto ha sido eliminado!",
+          title: "Tu producto ha sido eliminado de Favoritos!",
           text: "You clicked the button!",
           icon: "success",
         });
+        window.location.reload()
       }
     } catch (error) {
-      console.log(error);
+     console.log(error);
     }
   };
 
@@ -45,4 +47,4 @@ const Cards = ({ url, titulo, precio, codigo, idProduct, idPage }) => {
   );
 };
 
-export default Cards;
+export default CardsC;
