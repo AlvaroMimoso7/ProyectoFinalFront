@@ -1,4 +1,19 @@
-.bg-navbar-propio{
-    background: rgb(9,121,41);
-background: linear-gradient(90deg, rgba(9,121,41,1) 0%, rgba(26,255,0,1) 52%);
+.bg-navbar-propio {
+  background: rgb(9, 121, 41);
+  background: linear-gradient(
+    90deg,
+    rgba(9, 121, 41, 1) 0%,
+    rgba(26, 255, 0, 1) 52%
+  );
+}
+
+.body {
+  display: flex;
+
+  flex-direction: column;
+
+  min-height: 100vh;
+}
+.footer {
+  margin-top: auto;
 }

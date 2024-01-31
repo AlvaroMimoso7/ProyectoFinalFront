@@ -43,7 +43,7 @@ const RoutesViews = () => {
           }
         />
         <Route path="/admin-products" element={
-          <PrivatesRoutes>
+          <PrivatesRoutes role='admin'>
             <AdminProductPage />
           </PrivatesRoutes>
         } />

@@ -7,12 +7,14 @@ const clienteAxios = axios.create({
   //   baseURL:'http://vercel.com/api'
 });
 
-export const configHeaders = {
-  Headers:{
-  "content-type": "application/json",
-  "auth": `Bearer ${token}` 
-  }
-};
+export const configHeaders = () => ({
+  headers: {
+    "content-type": "application/json",
+    "Authorization": `Bearer ${
+      JSON.parse(sessionStorage.getItem("token")) || ""
+    }`,
+  },
+});
 
-
+// axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 export default clienteAxios;

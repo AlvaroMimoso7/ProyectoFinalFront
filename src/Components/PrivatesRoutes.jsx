@@ -1,17 +1,19 @@
+import { Navigate } from "react-router-dom";
+
 const PrivatesRoutes = ({ children, role }) => {
   const token = JSON.parse(sessionStorage.getItem("token"));
   const roleUser = JSON.parse(sessionStorage.getItem("role"));
 
   if (!token) {
-    location.href = "/";
+   return <Navigate to ="/"/>   ;
   } else {
     if (role === roleUser) {
       return children;
     } else {
       if (roleUser === "admin") {
-        location.href = "/admin";
+        return <Navigate to ="/admin"/>
       } else {
-        location.href = "/user";
+        return <Navigate to ="/user"/>
       }
     }
   }

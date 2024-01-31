@@ -7,8 +7,8 @@ const CartPage = () => {
   const [carrito, setCarrito] = useState([]);
 
   const getProdCart = async () => {
-    const carts = await clienteAxios.get(`/carts`, configHeaders);
-    setCarrito(carts.data.getCarts[0].productos);
+    const carts = await clienteAxios.get(`/carts`, configHeaders());
+    setCarrito(carts.data.getCarts.productos);
   };
 
   const handleChange = (ev) => {};

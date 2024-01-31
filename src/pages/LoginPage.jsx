@@ -63,7 +63,7 @@ const LoginPage = () => {
   };
   return (
     <>
-      <div className="d-flex justify-content-center my-5">
+      <div className="d-flex justify-content-center my-5 mt-5">
         <Form className="w-25">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Usuario</Form.Label>
@@ -86,11 +86,11 @@ const LoginPage = () => {
             />
           </Form.Group>
           <Button variant="success" type="submit" onClick={handleClick}>
-            Inciar Sesion
+            Iniciar Sesión
           </Button>
         </Form>
       </div>
-    </>
+</>
   );
 };
 

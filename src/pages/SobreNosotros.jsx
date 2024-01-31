@@ -13,7 +13,7 @@ const SobreNosotros = () => {
     <div className='body-1 mt-3'>
   <img src="../src/img/alvaro.jpg"  className='circular-name' width='100'></img>
 <h5 className="text-white">Alvaro Mimoso</h5>
-<p className="text-white">Mi nombre es Albaro  Martin Mimoso, tengo 25  años ,soy estudiante de Educación Física me gusta el fútbol y también me interesa todo lo relacionado con computación.. </p>
+<p className="text-white">Mi nombre es Alvaro  Martin Mimoso, tengo 26  años ,soy estudiante de Educación Física me gusta el fútbol y también me interesa todo lo relacionado con computación.. </p>
 </div> 
     </div>
 <div className="col-sm-12 col-md-6 col-lg-4">

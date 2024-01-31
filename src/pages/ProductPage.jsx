@@ -27,23 +27,20 @@ const ProductPage = () => {
           navigate("/login");
         }, 4000);
       } else {
-        const usuario = await clienteAxios.get(
-          `/users/${sessionStorage.getItem("idUsuario")}`
-        );
 
-        if (usuario.status === 200) {
-          const addProd = await clienteAxios.post(
-            `/products/cart/${params.id}`,
-            {},
-            configHeaders
-          );
-          if (addProd.status === 200) {
-            Swal.fire({
-              title: "Producto Añadido al Carrito!",
-              icon: "success",
-            });
-          }
+        const addProd = await clienteAxios.post(
+          `/products/cart/${params.id}`,
+          {},
+          configHeaders()
+        );
+console.log(addProd);
+        if (addProd.status === 200) {
+          Swal.fire({
+            title: "Producto Añadido al Carrito!",
+            icon: "success",
+          });
         }
+
       }
     } catch (error) {
       console.log(error);
@@ -58,7 +55,9 @@ const ProductPage = () => {
 
   const addFavCart = async () => {
     try {
+      console.log('entrar al try');
       if (!token) {
+        console.log('entra al if');
         Swal.fire({
           icon: "error",
           title: "Para añadir este producto a favoritos, debes Iniciar Sesion!",
@@ -68,25 +67,25 @@ const ProductPage = () => {
           navigate("/login");
         }, 4000);
       } else {
-        const usuario = await clienteAxios.get(
-          `/users/${sessionStorage.getItem("idUsuario")}`, configHeaders
-        );
+        console.log('entra al else');
 
-        if (usuario.status === 200) {
-          const addProd = await clienteAxios.post(
-            `/products/fav/${params.id}`,
-            {},
-            configHeaders
-          );
-          if (addProd.status === 200) {
-            Swal.fire({
-              title: "Producto Añadido a Favoritos!",
-              icon: "success",
-            });
-          }
+        const addProd = await clienteAxios.post(
+          `/products/fav/${params.id}`, {}, configHeaders()
+        );
+        console.log(addProd);
+        if (addProd.status === 200) {
+          console.log('entra al status=200');
+          Swal.fire({
+            title: "Producto Añadido a Favoritos!",
+            icon: "success",
+          });
+        }else{
+          console.log(addProd.status);
         }
+
       }
     } catch (error) {
+      console.log(error.response);
       if (error.response.status === 400) {
         Swal.fire({
           icon: "error",
@@ -101,15 +100,16 @@ const ProductPage = () => {
 
   return (
     <>
-      <Container>
-        <Row>
-          <Col>
-            <img src={product.imagen} alt="" />
+      <Container className="my-4">
+        <Row className="justify-content-center align-items-center">
+          <Col xs={12} sm={6}>
+            <img src={product.imagen} alt="Imagen del Producto" style={{ width: '50%', height: 'auto' }} />
           </Col>
-          <Col>
+          <Col xs={12} sm={6}>
             <p>{product.titulo}</p>
             <p>{product.precio}</p>
-            <div>
+            <p>{product.codigo}</p>
+            <div className="d-flex justify-content-center">
               <Button variant="primary" className="mx-2" onClick={addProdCart}>
                 Añadir al Carrito
               </Button>
@@ -120,6 +120,7 @@ const ProductPage = () => {
           </Col>
         </Row>
       </Container>
+
     </>
   );
 };

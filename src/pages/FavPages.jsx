@@ -8,13 +8,13 @@ const FavPages = () => {
 
   const getAllFav = async () => {
     try {
-      const favs = await clienteAxios.get("/favs", configHeaders);
-      setFavoritos(favs.data.getFavs[0].favoritos);
+      const favs = await clienteAxios.get("/favs", configHeaders());
+      console.log(favs);
+      setFavoritos(favs.data.getFavs.favoritos);
     } catch (error) {
       console.log(error);
     }
   };
-
   useEffect(() => {
     getAllFav();
   }, []);
