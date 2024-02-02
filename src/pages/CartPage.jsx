@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
-
+import Swal from "sweetalert2";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
 
 const CartPage = () => {
   const [carrito, setCarrito] = useState([]);
 
-
-
   const getProdCart = async () => {
-    const carts = await clienteAxios.get(`/carts`, configHeaders());
-    setCarrito(carts.data.getCarts[0].productos);
+    try {
+      const carts = await clienteAxios.get(`/carts`, configHeaders());
+      setCarrito(carts.data.getCarts[0].productos);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deleteOneProdCart = async (idProduct) => {
+    console.log(idProduct);
     try {
       const data = await clienteAxios.delete(
         `/carts/${idProduct}`,
@@ -25,16 +28,17 @@ const CartPage = () => {
           text: "You clicked the button!",
           icon: "success",
         });
-        window.location.reload()
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleChange = (ev) => { };
+  const handleChange = (ev) => {};
 
   useEffect(() => {
+    console.log(carrito);
     getProdCart();
   }, []);
 
@@ -45,11 +49,12 @@ const CartPage = () => {
           <thead>
             <tr>
               <th>Titulo</th>
-              <th>precio</th>
+              <th>Precio</th>
               <th>Descripcion</th>
               <th>Imagen</th>
               <th>Cantidad</th>
               <th>Total</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
@@ -59,29 +64,31 @@ const CartPage = () => {
                 <td>{cart.precio}</td>
                 <td>{cart.codigo}</td>
                 <td>
-                  <img src={cart.imagen} alt="imagen del producto" width={50} />
+                  <img
+                    src={cart.imagen}
+                    alt="imagen del producto"
+                    width={50}
+                  />
                 </td>
-
                 <td className="w-25">
                   <input
                     type="number"
                     className="form-control"
                     value={1}
                     onChange={handleChange}
-
                   />
                 </td>
                 <td>
                   <p>0</p>
                 </td>
                 <td>
-                  <td><Button
+                  <Button
                     className="btn btn-danger"
                     onClick={() => deleteOneProdCart(cart._id)}
                   >
                     Eliminar
                   </Button>
-                  </td></td>
+                </td>
               </tr>
             ))}
           </tbody>
