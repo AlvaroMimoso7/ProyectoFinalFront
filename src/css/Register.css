@@ -1,0 +1,29 @@
+.text-center{
+ color:white;
+ text-align: center;
+padding: 1rem;
+
+}
+.contenedor-hea{
+  margin-top: 0%;
+    padding: 10px;
+    min-height: 100vh;
+    background: url(https://tse4.mm.bing.net/th?id=OIP.oa2cyXjYv5Xi9y918Qek3AHaEK&pid=Api&P=0&h=220)no-repeat;
+    background-size: cover
+;
+
+   
+}
+.btn-register{
+  background-color: black !important;
+  color: antiquewhite !important;
+  border-color: aliceblue !important;
+    display: flex;
+    flex-direction: column;
+    
+}
+.form-1{
+ background-color: black !important;
+ color: white !important;
+ border-color:white!important
+}

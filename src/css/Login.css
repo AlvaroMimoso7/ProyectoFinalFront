@@ -1,0 +1,24 @@
+.contenedor-1{
+    min-height: 100vh;
+    background: url(https://img.freepik.com/fotos-premium/fondo-verde-fondo-negro-palabras-musica_7023-3413.jpg);
+    background-size: cover;
+}
+
+.text {
+    color: aliceblue;
+    text-align: center;
+padding: 1rem;
+}
+.btn-login{
+    background-color: black !important;
+    color: antiquewhite !important;
+    border-color: aliceblue !important;
+    text-decoration:white;
+   
+}
+.form{
+    background-color: black !important;
+    color: white !important;
+    border-color:white!important
+    
+}
