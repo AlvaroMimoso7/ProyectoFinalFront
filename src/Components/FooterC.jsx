@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 const FooterC = () => {
   return (
     <>
-      <body className="body">
+      
         <div className="footer">
           <footer className="bg-navbar-propio p-5">
             <Container>
@@ -50,7 +50,7 @@ const FooterC = () => {
             </Container>
           </footer>
         </div>
-      </body>
+      
     </>
   );
 };

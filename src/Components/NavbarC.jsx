@@ -117,7 +117,7 @@ const NavbarC = () => {
                   <NavLink to="/sobre nosotros" className={"nav-link"}>
                     Sobre nosotros
                   </NavLink>
-                  <NavLink to="#link" className={"nav-link"}>
+                  <NavLink to="/contacto" className={"nav-link"}>
                     Contacto
                   </NavLink>
                   <NavLink to="/fav" className={"nav-link"}>
@@ -207,7 +207,7 @@ const NavbarC = () => {
                   <NavLink to="/sobre-nosotros" className={"nav-link"}>
                     Sobre nosotros
                   </NavLink>
-                  <NavLink to="#link" className={"nav-link"}>
+                  <NavLink to="/contacto" className={"nav-link"}>
                     Contacto
                   </NavLink>
                 </>

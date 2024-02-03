@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Swal from "sweetalert2";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
+import '../css/Register.css'
 const RegisterPage = () => {
   const [formValues, setFormValues] = useState({
     user: "",
@@ -60,56 +61,65 @@ const RegisterPage = () => {
 
   return (
     <>
-      <div className="text-center my-5">RegisterPage</div>
-      <div className="d-flex justify-content-center mb-5">
-        <Form className="w-25">
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Usuario</Form.Label>
-            <Form.Control
-              type="text"
-              name="user"
-              value={formValues.user}
-              onChange={handleChange}
-              placeholder="EJ:usuario123"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email del Usuario</Form.Label>
-            <Form.Control
-              type="text"
-              name="email"
-              value={formValues.email}
-              onChange={handleChange}
-              placeholder="EJ: email@dominio.com"
-            />
-          </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Contraseña</Form.Label>
-            <Form.Control
-              value={formValues.pass}
-              name="pass"
-              onChange={handleChange}
-              type="password"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Repetir Contraseña</Form.Label>
-            <Form.Control
-              value={formValues.rpass}
-              name="rpass"
-              onChange={handleChange}
-              type="password"
-            />
-          </Form.Group>
 
-          <div className="d-flex justify-content-center">
-            <Button variant="success" type="submit" onClick={handleClick}>
+      <div className="contenedor-hea">
+        <h1 className="text-center 1rem">CREA TU CUENTA</h1>
+        <div className="d-flex justify-content-center mb-5">
+          <Form className="w-25">
+            <Form.Group className="mb-3 " controlId="formBasicEmail">
+              <Form.Label className="text-center">Usuario</Form.Label>
+              <Form.Control className="form-1"
+                type="text"
+                name="user"
+                value={formValues.user}
+                onChange={handleChange}
+                placeholder="EJ:usuario123"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail ">
+              <Form.Label className="text-center ">Email del Usuario</Form.Label>
+              <Form.Control className="form-1"
+                type="text"
+                name="email"
+                value={formValues.email}
+                onChange={handleChange}
+                placeholder="EJ: email@dominio.com"
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword ">
+              <Form.Label className="text-center">Contraseña</Form.Label>
+              <Form.Control className="form-1"
+                value={formValues.pass}
+                name="pass"
+                onChange={handleChange}
+                type="password"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label className="text-center">Repetir Contraseña</Form.Label>
+              <Form.Control className="form-1"
+                value={formValues.rpass}
+                name="rpass"
+                onChange={handleChange}
+                type="password"
+              />
+            </Form.Group>
+           
+            <Button  className="btn-register " type="submit" onClick={handleClick}>
               Registrarse
             </Button>
-          </div>
-        </Form>
+
+            
+           
+
+
+          </Form>
+        </div>
+
       </div>
+
     </>
   );
 };
