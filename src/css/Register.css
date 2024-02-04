@@ -1,11 +1,11 @@
 .text-center{
  color:white;
  text-align: center;
-padding: 1rem;
+margin: 5%;
 
 }
 .contenedor-hea{
-  margin-top: 0%;
+  margin-top: 5%;
     padding: 10px;
     min-height: 100vh;
     background: url(https://tse4.mm.bing.net/th?id=OIP.oa2cyXjYv5Xi9y918Qek3AHaEK&pid=Api&P=0&h=220)no-repeat;

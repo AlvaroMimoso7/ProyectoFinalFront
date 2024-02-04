@@ -68,7 +68,7 @@ const LoginPage = () => {
     <h1 className="text">BIENVENIDOS</h1>
       <div className="d-flex justify-content-center my-5 mt-5">
         <Form className="w-25">
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-2" controlId="formBasicEmail">
             <Form.Label className="text">Usuario</Form.Label>
             <Form.Control className="form"
               type="text"
@@ -79,7 +79,7 @@ const LoginPage = () => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-2" controlId="formBasicPassword">
             <Form.Label className="text">Contraseña</Form.Label>
             <Form.Control className="form"
               type="password"
