@@ -78,7 +78,7 @@ const NavbarC = () => {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-navbar-propio" >
+      <Navbar expand="lg" className="bg-navbar-propio" fixed="top">
         <Container fluid>
           <Navbar.Brand
             href={

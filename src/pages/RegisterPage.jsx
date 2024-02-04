@@ -40,6 +40,9 @@ const RegisterPage = () => {
             title: "Felicidades te registraste Exitosamente!",
             icon: "success",
           });
+          setInterval(()=>{
+            location.href='/login'
+          },2000)
         }
       } else {
         Swal.fire({

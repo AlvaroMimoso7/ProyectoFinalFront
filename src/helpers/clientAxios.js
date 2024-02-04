@@ -10,9 +10,7 @@ const clienteAxios = axios.create({
 export const configHeaders = () => ({
   headers: {
     "content-type": "application/json",
-    "Authorization": `Bearer ${
-      JSON.parse(sessionStorage.getItem("token")) || ""
-    }`,
+    "Authorization": `Bearer ${token}`,
   },
 });
 
