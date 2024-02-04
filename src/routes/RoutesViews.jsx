@@ -57,6 +57,7 @@ const RoutesViews = () => {
             <CartPage />
           </PrivatesRoutes>
         } />
+
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/sobre-nosotros" element={<SobreNosotros />} />

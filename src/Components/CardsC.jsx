@@ -27,18 +27,18 @@ const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage }) => {
   };
 
   return (
-    <Card style={{ width: "18rem"}}>
+    <Card style={{ width:"18rem"}}>
     <Card.Img variant="top" src={url} className="object-fit-cover" />
     <Card.Body style={{ flex: 1, display: "flex", flexDirection: "column" }}>
       <Card.Title>{titulo}</Card.Title>
-      <Card.Text>{precio}</Card.Text>
+      <Card.Text >{precio}</Card.Text>
       <Card.Text>{codigo}</Card.Text>
       {idPage === "FavPage" ? (
         <Link to={`#`} className="btn btn-danger" onClick={deleteProdFav}>
           Eliminar
         </Link>
       ) : (
-        <Link to={`/product/${idProduct}`} className="btn btn-success">
+        <Link to={`/product/${idProduct}`} className="btn btn-cards">
           Ver mas
         </Link>
       )}

@@ -1,0 +1,24 @@
+.btn-product{
+    background-color: black !important;
+    color: antiquewhite !important;
+    border-color: aliceblue !important;
+    text-decoration:white;
+}
+.btn-pro{
+    background-color: rgba(128, 255, 0, 0.841)!important;
+    color: black !important;
+    border-color: white !important;
+  
+}
+.product-ti{
+    color: rgba(128, 255, 0, 0.841);
+    
+}
+.contenedor-product{
+
+    min-height: 100vh;
+    background-color: black !important;
+}
+.product-pre{
+color: white;
+}
