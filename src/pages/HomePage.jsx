@@ -3,6 +3,8 @@ import { Col, Container, Row} from "react-bootstrap";
 import Cards from "../Components/CardsC";
 import clienteAxios from "../helpers/clientAxios";
 import CarrouselC from "../Components/CarrouselC";
+import PublicidadC from "../Components/PublicidadC";
+
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -40,6 +42,17 @@ const HomePage = () => {
             ))}
           </Row>
         </Container>
+
+         <Container className="publicidad mt-3 my-3">
+          <Row>
+            <Col sm={"12"} md={"6"} lg={"4"} >
+            <PublicidadC />
+            </Col>
+          </Row>
+         </Container>
+         
+        
+        
       </div>
     </>
   );
