@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ImagenesC from "../Components/ImagenesC";
 import { Col, Container, Row} from "react-bootstrap";
 import Cards from "../Components/CardsC";
 import clienteAxios from "../helpers/clientAxios";
+import CarrouselC from "../Components/CarrouselC";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -16,7 +16,7 @@ const HomePage = () => {
   return (
     <>
       <div className="contenedor">
-        <ImagenesC
+        <CarrouselC
           url={
             "https://img.freepik.com/fotos-premium/gimnasio-arafed-bandas-rodadura-maquinas-gran-sala-generativa-ai_955884-9931.jpg"
           }
