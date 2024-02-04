@@ -7,15 +7,15 @@ const CarrouselC = () => {
     <>
      <Carousel>
       <Carousel.Item >
-       <img src='https://www.beaumont.ab.ca/ImageRepository/Document?documentID=5427' width='100%'/>
+       <img src='https://www.lifefitness.es/resource/image/1867664/landscape_ratio16x9/720/405/b4baeb4ac095bb9d3c089c1037d4ce60/QK/gimnasio-altafit-torre-picasso-madrid-spain-3.jpg' width='100%'/>
     
       </Carousel.Item>
       <Carousel.Item>
-      <img src='https://tse1.mm.bing.net/th?id=OIP.XrIAC8VIrh7OQcFRlxQcrAHaEK&pid=Api&P=0&h=220'alt='' width='100%'/>
+      <img src='https://suelosport.com/wp-content/uploads/2021/01/Como-eliminar-ruidos-en-gimnasios-copy.jpg'alt='' width='100%'/>
      
       </Carousel.Item>
       <Carousel.Item>
-      <img src='https://tse2.mm.bing.net/th?id=OIP.0oFJTcLNRkh3RkopsjWwuAHaE8&pid=Api&P=0&h=220'width='100%'/>
+      <img src='https://www.jdgyms.co.uk/wp-content/uploads/2023/02/Pre-sale-Website-Pics-6-1024x682.png'width='100%'/>
      
       </Carousel.Item>
     </Carousel>

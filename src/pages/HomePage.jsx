@@ -42,16 +42,15 @@ const HomePage = () => {
           </Row>
         </Container>
 
-         <Container className="publicidad mt-3 my-3">
+        <div className="propaganda">
+        <Container>
           <Row>
-            <Col sm={"12"} md={"6"} lg={"4"} >
+            <Col>
             <PublicidadC />
             </Col>
           </Row>
          </Container>
-         
-        
-        
+        </div>
       </div>
     </>
   );
