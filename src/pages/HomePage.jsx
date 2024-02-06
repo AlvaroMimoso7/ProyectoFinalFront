@@ -4,6 +4,7 @@ import Cards from "../Components/CardsC";
 import clienteAxios from "../helpers/clientAxios";
 import CarrouselC from "../Components/CarrouselC";
 import PublicidadC from "../Components/PublicidadC";
+import "../css/PublicidadC.css";
 
 
 const HomePage = () => {
@@ -43,14 +44,8 @@ const HomePage = () => {
           </Row>
         </Container>
 
-        <div className="propaganda">
-        <Container>
-          <Row>
-            <Col>
+        <div className="publicidad-uno">
             <PublicidadC />
-            </Col>
-          </Row>
-         </Container>
         </div>
       </div>
     </>
