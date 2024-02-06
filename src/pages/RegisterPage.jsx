@@ -68,7 +68,7 @@ const RegisterPage = () => {
         <h1 className="text-center 1rem">CREA TU CUENTA</h1>
         <div className="d-flex justify-content-center mb-5">
           <Form className="w-25">
-            <Form.Group className="mb-2 " controlId="formBasicEmail">
+            <Form.Group className="mb-2" controlId="formBasicEmail">
               <Form.Label className="text-center">Usuario</Form.Label>
               <Form.Control className="form-1"
                 type="text"

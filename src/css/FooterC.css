@@ -9,12 +9,9 @@
 
 .body {
   display: flex;
-
   flex-direction: column;
-
   min-height: 100vh;
 }
 .footer-principal {
-margin-top: auto;
+  margin-top: auto;
 }
-

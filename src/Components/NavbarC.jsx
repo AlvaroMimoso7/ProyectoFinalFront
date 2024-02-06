@@ -78,7 +78,7 @@ const NavbarC = () => {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-navbar-propio" fixed="top">
+      <Navbar expand="lg" className="bg-navbar-propio">
         <Container fluid>
           <Navbar.Brand
             href={
@@ -114,7 +114,7 @@ const NavbarC = () => {
               </NavLink>
               {token && role === "user" ? (
                 <>
-                  <NavLink to="/sobre nosotros" className={"nav-link"}>
+                  <NavLink to="/sobre-nosotros" className={"nav-link"}>
                     Sobre nosotros
                   </NavLink>
                   <NavLink to="/contacto" className={"nav-link"}>

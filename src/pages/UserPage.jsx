@@ -3,6 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import Cards from "../Components/CardsC";
 import clienteAxios from "../helpers/clientAxios";
 
+
 const UserPage = () => {
   const [products, setProducts] = useState([]);
 
@@ -17,7 +18,7 @@ const UserPage = () => {
 
   return (
     <>
-      <Container>
+      <Container className="footer-principal">
         <Row>
           {products.map((product) => (
             <Col sm={"12"} md={"6"} lg={"4"} className="my-3" key={product._id}>
