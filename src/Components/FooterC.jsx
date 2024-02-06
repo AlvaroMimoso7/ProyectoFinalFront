@@ -54,8 +54,8 @@ const FooterC = () => {
               />
             </Col>
             <Col sm={12}md={2} lg={2}>
-              <Nav.Link>Trabaja con nosotors</Nav.Link>
-              <Nav.Link>Terminos y condiciones</Nav.Link>
+              <Nav.Link>Trabaja con nosotros</Nav.Link>
+              <Nav.Link>Terminos y Condiciones</Nav.Link>
               <Nav.Link>Contactanos</Nav.Link>
             </Col>
             <Col sm={12} md={2} lg={2}>
