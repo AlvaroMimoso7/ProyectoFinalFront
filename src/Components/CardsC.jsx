@@ -16,7 +16,6 @@ const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage }) => {
       if (data.status === 200) {
         Swal.fire({
           title: "Tu producto ha sido eliminado de Favoritos!",
-          text: "You clicked the button!",
           icon: "success",
         });
         window.location.reload()
@@ -27,7 +26,7 @@ const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage }) => {
   };
 
   return (
-    <Card style={{ width:"18rem"}}>
+    <Card style={{ width:"18rem"}} className="mb-5">
     <Card.Img variant="top" src={url} className="object-fit-cover" />
     <Card.Body style={{ flex: 1, display: "flex", flexDirection: "column" }}>
       <Card.Title>{titulo}</Card.Title>
