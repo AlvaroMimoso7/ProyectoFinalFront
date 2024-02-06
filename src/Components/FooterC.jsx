@@ -59,8 +59,8 @@ const FooterC = () => {
               <Nav.Link>Contactanos</Nav.Link>
             </Col>
             <Col sm={12} md={2} lg={2}>
-              <Nav.Link>Mi cuenta</Nav.Link>
-              <Nav.Link>Favoritos</Nav.Link>
+              <Nav.Link>Nuestro staff</Nav.Link>
+              <Nav.Link>Nuestros clientes</Nav.Link>
               <Nav.Link>Ayuda</Nav.Link>
             </Col>
             <Col sm={12} md={2} lg={2} >
@@ -73,7 +73,7 @@ const FooterC = () => {
                 url={
                   "https://play-lh.googleusercontent.com/le3s-_gKL2hVVlshaopT-oxv1HCxwmnQgjIRzw7y69Zr_3DoCzQFSc6hcLn8byz1mu_A=w240-h480-rw"
                 }
-                alt={"imagen principal"}
+                alt={"imagen afip"}
                 width={`100`}
               />
             </Col>
@@ -81,7 +81,7 @@ const FooterC = () => {
            
           
           </Row>
-          <div className="text-lg-end m-0">
+          <div className="text-lg-end">
              <p>Copyright @powergym, todos los derechos reservados.</p>
           </div>
         </Container>
