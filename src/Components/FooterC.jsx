@@ -73,7 +73,7 @@ const FooterC = () => {
                 url={
                   "https://play-lh.googleusercontent.com/le3s-_gKL2hVVlshaopT-oxv1HCxwmnQgjIRzw7y69Zr_3DoCzQFSc6hcLn8byz1mu_A=w240-h480-rw"
                 }
-                alt={"imagen principal"}
+                alt={"imagen afip"}
                 width={`100`}
               />
             </Col>
