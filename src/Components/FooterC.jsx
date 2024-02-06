@@ -59,8 +59,8 @@ const FooterC = () => {
               <Nav.Link>Contactanos</Nav.Link>
             </Col>
             <Col sm={12} md={2} lg={2}>
-              <Nav.Link>Mi cuenta</Nav.Link>
-              <Nav.Link>Favoritos</Nav.Link>
+              <Nav.Link>Nuestro staff</Nav.Link>
+              <Nav.Link>Nuestros clientes</Nav.Link>
               <Nav.Link>Ayuda</Nav.Link>
             </Col>
             <Col sm={12} md={2} lg={2} >
@@ -81,7 +81,7 @@ const FooterC = () => {
            
           
           </Row>
-          <div className="text-lg-end m-0">
+          <div className="text-lg-end">
              <p>Copyright @powergym, todos los derechos reservados.</p>
           </div>
         </Container>
