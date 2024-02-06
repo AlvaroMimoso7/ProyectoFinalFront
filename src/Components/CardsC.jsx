@@ -31,7 +31,9 @@ const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage }) => {
     <Card.Body style={{ flex: 1, display: "flex", flexDirection: "column" }}>
       <Card.Title>{titulo}</Card.Title>
       <Card.Text >{precio}</Card.Text>
-      <Card.Text>{codigo}</Card.Text>
+      <Card.Text style={{whiteSpace: 'nowrap', 
+  overflow: 'hidden',
+  textOverflow: 'ellipsis'}}>{codigo}</Card.Text>
       {idPage === "FavPage" ? (
         <Link to={`#`} className="btn btn-danger" onClick={deleteProdFav}>
           Eliminar

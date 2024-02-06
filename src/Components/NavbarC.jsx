@@ -31,7 +31,9 @@ const NavbarC = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("role");
     sessionStorage.removeItem("idUsuario");
+   setTimeout(()=>{
     navigate("/");
+  },1000)
   };
 
   const handleChange = (ev) => {
