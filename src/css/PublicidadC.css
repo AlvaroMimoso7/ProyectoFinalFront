@@ -1,2 +1,6 @@
 
-  
+@media(max-width:991px){
+    .publicidad-uno{
+        display: none;
+    }
+}
