@@ -5,7 +5,7 @@ import { Nav, Container } from 'react-bootstrap';
 
 const ErrorPage = () => {
   return (
-    <Container fluid className="fondo-error">  
+    <Container fluid className="fondo-error" >  
       <div className='d-flex justify-content-center mt-5'>
         <Nav.Link href="/"><Button variant='primary' size='lg'>Regresa al gimnasio</Button></Nav.Link>
       </div>
