@@ -1,0 +1,7 @@
+.fondo-error{
+    padding: 5px;
+    min-height: 100vh;
+    background-image: url(../src/img/template.png);
+    background-size: cover;
+    
+}
