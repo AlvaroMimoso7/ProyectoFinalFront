@@ -10,28 +10,28 @@ const FooterC = () => {
         <Container fluid  className="">
           <div className="d-flex flex-row mt-3 mb-3 justify-content-center">
           
-              <NavLink className="mx-2"><ImagenesC
+              <NavLink href="*" className="mx-2"><ImagenesC
                url={
                "https://cdn.icon-icons.com/icons2/2429/PNG/512/facebook_logo_icon_147291.png"
                }
                alt={"facebook"}
                width={"30"}
               /></NavLink>
-             <NavLink className="mx-2"><ImagenesC
+             <NavLink href="*" className="mx-2"><ImagenesC
               url={
               "https://png.pngtree.com/png-clipart/20230401/original/pngtree-three-dimensional-instagram-icon-png-image_9015419.png"
               }
               alt={"instagram"}
               width={"30"}
               /></NavLink>
-             <NavLink className="mx-2"><ImagenesC
+             <NavLink href="*" className="mx-2"><ImagenesC
               url={
               "https://static.vecteezy.com/system/resources/previews/016/716/452/non_2x/youtube-icon-free-png.png"
               }
               alt={"youtube"}
               width={"30"}
               /></NavLink>
-             <NavLink className="mx-2"><ImagenesC
+             <NavLink href="*" className="mx-2"><ImagenesC
               url={
               "https://cdn.icon-icons.com/icons2/1906/PNG/512/iconfinder-linkedin-4550875_121338.png"
               }
@@ -42,7 +42,7 @@ const FooterC = () => {
               <br />
            
           </div>
-          <Row className="justify-content-center">
+          <Row className="justify-content-center text-dark">
             <Col sm={12} md={2} lg={2}>
               <ImagenesC 
                 url={
@@ -54,19 +54,19 @@ const FooterC = () => {
               />
             </Col>
             <Col sm={12}md={2} lg={2}>
-              <Nav.Link>Trabaja con nosotros</Nav.Link>
-              <Nav.Link>Terminos y Condiciones</Nav.Link>
-              <Nav.Link>Contactanos</Nav.Link>
+              <NavLink href="*">Trabaja con nosotros</NavLink>
+              <NavLink href="*">Terminos y Condiciones</NavLink>
+              <NavLink href="/contacto">Contactanos</NavLink>
             </Col>
             <Col sm={12} md={2} lg={2}>
-              <Nav.Link>Nuestro staff</Nav.Link>
-              <Nav.Link>Nuestros clientes</Nav.Link>
-              <Nav.Link>Ayuda</Nav.Link>
+              <NavLink href="sobre-nosotros">Nuestro staff</NavLink>
+              <NavLink href="*">Nuestros clientes</NavLink>
+              <NavLink href="/contacto">Ayuda</NavLink>
             </Col>
             <Col sm={12} md={2} lg={2} >
-              <Nav.Link>General Paz 576</Nav.Link>
-              <Nav.Link>0381-5783030</Nav.Link>
-              <Nav.Link>info@powergym.com.ar</Nav.Link>
+              <NavLink>General Paz 576</NavLink>
+              <NavLink>0381-5783030</NavLink>
+              <NavLink>info@powergym.com.ar</NavLink>
             </Col>
             <Col sm={12} md={2} lg={2} className="d-none d-lg-block">
               <ImagenesC
