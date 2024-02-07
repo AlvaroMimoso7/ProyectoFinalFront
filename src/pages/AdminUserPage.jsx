@@ -5,6 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Swal from "sweetalert2";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
+import '../css/AdminUserPage.css'
 
 
 const AdminUserPage = () => {
@@ -104,7 +105,7 @@ const AdminUserPage = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-center mt-3">
+      <div className="main-container d-flex justify-content-center mt-3">
         <Table striped bordered hover className="75">
           <thead>
             <tr>
