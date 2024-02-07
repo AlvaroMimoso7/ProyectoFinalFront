@@ -13,7 +13,6 @@ const UserPage = () => {
   };
   useEffect(() => {
     getProducts();
-    console.log(products);
   }, []);
 
   return (
