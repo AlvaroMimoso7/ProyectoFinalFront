@@ -9,6 +9,8 @@ import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
+import Swal from "sweetalert2";
+
 
 const NavbarC = () => {
   const navigate = useNavigate();
