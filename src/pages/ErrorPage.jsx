@@ -7,7 +7,7 @@ const ErrorPage = () => {
   return (
     <Container fluid className="fondo-error" >  
       <div className='d-flex justify-content-center mt-5'>
-        <Nav.Link href="/"><Button variant='primary' size='lg'>Regresa al gimnasio</Button></Nav.Link>
+        <Nav.Link href="/"><Button className='btn-error' size='lg'>Regresa al gimnasio</Button></Nav.Link>
       </div>
     </Container>
   );

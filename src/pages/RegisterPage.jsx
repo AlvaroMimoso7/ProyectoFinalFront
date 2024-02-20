@@ -74,8 +74,8 @@ const RegisterPage = () => {
                 type="text"
                 name="user"
                 value={formValues.user}
-                onChange={handleChange}
-                placeholder="EJ:usuario123"
+                onChange={handleChange} 
+                placeholder ="EJ:usuario123"
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail ">

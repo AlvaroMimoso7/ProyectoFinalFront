@@ -5,3 +5,11 @@
     background-size: cover;
     
 }
+.btn-error{
+    background-color: black !important;
+    border-color: white !important;
+}
+.btn-enviar{
+    background-color: black !important;
+    border-color: white !important;
+}
