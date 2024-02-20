@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { Container, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import ImagenesC from '../Components/ImagenesC';
+import '../css/errorpage.css'
 
 const Contacto = () => {
   return (
@@ -46,7 +47,7 @@ const Contacto = () => {
                 <Form.Label>Escribe tu comentario</Form.Label>
                 <Form.Control as="textarea" rows={3} />
               </Form.Group>
-              <Button variant="warning" type="submit">
+              <Button className='btn-enviar' type="submit">
                 Enviar
               </Button>
             </Form>
