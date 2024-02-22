@@ -7,20 +7,25 @@ import Swal from "sweetalert2";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
 import '../css/AdminUserPage.css'
 
-
 const AdminUserPage = () => {
   const [users, setUsers] = useState([]);
-  const [show, setShow] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [userStates, setUserStates] = useState({});
+  const [editingUserId, setEditingUserId] = useState(null);
 
-  const handleClose = () => setShow(false);
-  const handleShow = (idUser) => {
-    setShow(true);
+  const handleClose = useCallback(() => {
+    setShowModal(false);
+    setEditingUserId(null);
+  }, []);
+
+  const handleShow = useCallback((idUser) => {
+    setShowModal(true);
+    setEditingUserId(idUser);
     const userFind = users.find((user) => user._id === idUser);
     setUserStates(userFind);
-  };
+  }, [users]);
 
-  const getAllUsers =useCallback (async () => {
+  const getAllUsers = useCallback(async () => {
     try {
       const getUsers = await clienteAxios.get("/users", configHeaders());
       setUsers(getUsers.data.getAllUsers);
@@ -28,10 +33,10 @@ const AdminUserPage = () => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Tus productos no pueden encontrarse!",
+        text: "Tus usuarios no pueden ser cargados!",
       });
     }
-  });
+  }, []);
 
   const handleChange = (ev) => {
     setUserStates({ ...userStates, [ev.target.name]: ev.target.value });
@@ -50,6 +55,11 @@ const AdminUserPage = () => {
         configHeaders()
       );
       if (updateProd.status === 200) {
+        const updatedUsers = users.map((user) =>
+          user._id === userStates._id ? { ...user, ...userStates } : user
+        );
+        setUsers(updatedUsers);
+
         handleClose();
         Swal.fire({
           title: "Usuario Actualizado exitosamente!",
@@ -60,7 +70,7 @@ const AdminUserPage = () => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Tus productos no pueden ser actualizados!",
+        text: "Tus usuarios no pueden ser actualizados!",
       });
     }
   };
@@ -82,9 +92,12 @@ const AdminUserPage = () => {
             configHeaders()
           );
           if (delUser.status === 200) {
+            const updatedUsers = users.filter((user) => user._id !== idUser);
+            setUsers(updatedUsers);
+
+            handleClose();
             Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
+              title: "Usuario eliminado exitosamente!",
               icon: "success",
             });
           }
@@ -94,14 +107,14 @@ const AdminUserPage = () => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Tus productos no pueden ser actualizados!",
+        text: "Tus usuarios no pueden ser eliminados!",
       });
     }
   };
 
   useEffect(() => {
     getAllUsers();
-  }, []);
+  }, [getAllUsers]);
 
   return (
     <>
@@ -129,58 +142,6 @@ const AdminUserPage = () => {
                     Editar
                   </Button>
 
-                  <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Editar Usuarios</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      <Form>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                          <Form.Label>Nombre</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="nombreUsuario"
-                            value={userStates.nombreUsuario}
-                            onChange={handleChange}
-                          />
-                        </Form.Group>
-
-                        <Form.Group
-                          className="mb-3"
-                          controlId="formBasicPassword"
-                        >
-                          <Form.Label>Email</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="emailUsuario"
-                            value={userStates.emailUsuario}
-                            onChange={handleChange}
-                          />
-                        </Form.Group>
-
-                        <Form.Group
-                          className="mb-3"
-                          controlId="formBasicPassword"
-                        >
-                          <Form.Label>Role</Form.Label>
-                          <Form.Control
-                            type="text"
-                            value={userStates.role}
-                            name="role"
-                            onChange={handleChange}
-                          />
-                        </Form.Group>
-
-                        <Button
-                          variant="success "
-                          type="submit"
-                          onClick={handleClick}
-                        >
-                          Guardar
-                        </Button>
-                      </Form>
-                    </Modal.Body>
-                  </Modal>
                   <Button
                     variant="danger"
                     className={user.role === "admin" && "d-none"}
@@ -194,6 +155,53 @@ const AdminUserPage = () => {
           </tbody>
         </Table>
       </div>
+
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Editar Usuarios</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Nombre</Form.Label>
+              <Form.Control
+                type="text"
+                name="nombreUsuario"
+                value={userStates.nombreUsuario || ""}
+                onChange={handleChange}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="text"
+                name="emailUsuario"
+                value={userStates.emailUsuario || ""}
+                onChange={handleChange}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Role</Form.Label>
+              <Form.Control
+                type="text"
+                value={userStates.role || ""}
+                name="role"
+                onChange={handleChange}
+              />
+            </Form.Group>
+
+            <Button
+              variant="success"
+              type="submit"
+              onClick={handleClick}
+            >
+              Guardar
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

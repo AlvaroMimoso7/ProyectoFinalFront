@@ -5,19 +5,9 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Swal from "sweetalert2";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
+
 const AdminProductPage = () => {
   const [products, setProducts] = useState([]);
-  const [show, setShow] = useState(false);
-  const [productStates, setProductStates] = useState({});
-  const [imagen, setImagen] = useState({})
-  
-
-  const handleClose = () => setShow(false);
-  const handleShow = (idProd) => {
-    setShow(true);
-    const productFind = products.find((prod) => prod._id === idProd);
-    setProductStates(productFind);
-  };
 
   const getProducts = async () => {
     try {
@@ -27,29 +17,27 @@ const AdminProductPage = () => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Tus Productos no estan en la lista!",
+        text: "Tus Productos no están en la lista!",
       });
     }
   };
-  const handleChange = (ev) => {
-    setProductStates({ ...productStates, [ev.target.name]: ev.target.value });
-  };
-  const handleClick = async (ev) => {
-    try {
-      ev.preventDefault();
-const data = new FormData()
-data.append('titulo', productStates.titulo)
-data.append('precio', productStates.precio)
-data.append('codigo', productStates.codigo)
-data.append('imagen', imagen)
 
-      const updateProd = await clienteAxios.put(
-        `/products/${productStates._id}`,
-        data,
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const handleEdit = async (id, updatedProduct) => {
+    try {
+      const response = await clienteAxios.put(
+        `/products/${id}`,
+        updatedProduct,
         configHeaders()
       );
-      if (updateProd.status === 200) {
-        handleClose();
+      if (response.status === 200) {
+        const updatedProducts = products.map((product) =>
+          product._id === id ? { ...product, ...updatedProduct } : product
+        );
+        setProducts(updatedProducts);
         Swal.fire({
           title: "Producto Actualizado exitosamente!",
           icon: "success",
@@ -63,11 +51,12 @@ data.append('imagen', imagen)
       });
     }
   };
-  const deleteProd = async (idProd) => {
+
+  const handleDelete = async (id) => {
     try {
       Swal.fire({
-        title: "Estas seguro de que quieres eleminar este producto?",
-        text: "Si lo borras, ya no habra vuelta atras, piensalo bien!",
+        title: "Estás seguro de que quieres eliminar este producto?",
+        text: "Si lo borras, ya no habrá vuelta atrás, piénsalo bien!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -75,8 +64,15 @@ data.append('imagen', imagen)
         confirmButtonText: "Si, estoy seguro!",
       }).then(async (result) => {
         if (result.isConfirmed) {
-          const delProd = await clienteAxios.delete(`/products/${idProd}`,configHeaders());
-          if (delProd.status === 200) {
+          const response = await clienteAxios.delete(
+            `/products/${id}`,
+            configHeaders()
+          );
+          if (response.status === 200) {
+            const filteredProducts = products.filter(
+              (product) => product._id !== id
+            );
+            setProducts(filteredProducts);
             Swal.fire({
               title: "Producto eliminado correctamente!",
               icon: "success",
@@ -88,19 +84,15 @@ data.append('imagen', imagen)
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Tus Productos no se pueden actualizar!",
+        text: "Tus Productos no se pueden eliminar!",
       });
     }
   };
 
-  useEffect(() => {
-    getProducts();
-  }, []);
-
   return (
-    <>
-      <div className="d-flex justify-content-center mt-3">
-        <Table striped bordered hover className="w-75">
+    <div className="d-flex flex-column min-vh-100">
+      <div className="d-flex justify-content-center mt-3 flex-grow-1">
+        <Table responsive bordered hover className="w-100">
           <thead>
             <tr>
               <th>Titulo del Producto</th>
@@ -112,97 +104,124 @@ data.append('imagen', imagen)
           </thead>
           <tbody>
             {products.map((product) => (
-              <tr key={product._id}>
-                <td>{product.titulo}</td>
-                <td>{product.precio}</td>
-                <td>{product.codigo}</td>
-                <td>
-                  <img src={product.imagen} alt="" width={"50"} />
-                </td>
-                <td>
-                  <Button
-                    variant="warning"
-                    onClick={() => handleShow(product._id)}
-                  >
-                    Editar
-                  </Button>
-
-                  <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Editar Productos</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      <Form>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                          <Form.Label>Titulo</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="titulo"
-                            value={productStates.titulo}
-                            onChange={handleChange}
-                          />
-                        </Form.Group>
-
-                        <Form.Group
-                          className="mb-3"
-                          controlId="formBasicPassword"
-                        >
-                          <Form.Label>Precio</Form.Label>
-                          <Form.Control
-                            type="text"
-                            name="precio"
-                            value={productStates.precio}
-                            onChange={handleChange}
-                          />
-                        </Form.Group>
-
-                        <Form.Group
-                          className="mb-3"
-                          controlId="formBasicPassword"
-                        >
-                          <Form.Label>Codigo</Form.Label>
-                          <Form.Control
-                            type="text"
-                            value={productStates.codigo}
-                            name="codigo"
-                            onChange={handleChange}
-                          />
-                        </Form.Group>
-
-                        <Form.Group
-                          className="mb-3"
-                          controlId="formBasicPassword"
-                        >
-                          <Form.Label>Imagen</Form.Label>
-                          <Form.Control
-                            type="text"
-                            onChange={(ev)=>setImagen(ev.target.files[0])}
-                          />
-                        </Form.Group>
-
-                        <Button
-                          variant="success "
-                          type="submit"
-                          onClick={handleClick}
-                        >
-                          Guardar
-                        </Button>
-                      </Form>
-                    </Modal.Body>
-                  </Modal>
-                  <Button
-                    variant="danger"
-                    onClick={() => deleteProd(product._id)}
-                  >
-                    Eliminar
-                  </Button>
-                </td>
-              </tr>
+              <ProductRow
+                key={product._id}
+                product={product}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+              />
             ))}
           </tbody>
         </Table>
       </div>
-    </>
+      <Footer />
+    </div>
+  );
+};
+
+const ProductRow = ({ product, onEdit, onDelete }) => {
+  const [show, setShow] = useState(false);
+  const [productState, setProductState] = useState(product);
+  const [newImage, setNewImage] = useState(null);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const handleChange = (ev) => {
+    setProductState({ ...productState, [ev.target.name]: ev.target.value });
+  };
+
+  const handleImageChange = (ev) => {
+    setNewImage(ev.target.files[0]);
+  };
+
+  const handleSave = async (ev) => {
+    ev.preventDefault();
+    const data = new FormData();
+    data.append("titulo", productState.titulo);
+    data.append("precio", productState.precio);
+    data.append("codigo", productState.codigo);
+    if (newImage) {
+      data.append("imagen", newImage);
+    } else {
+      data.append("imagen", productState.imagen);
+    }
+
+    onEdit(productState._id, data);
+    handleClose();
+  };
+
+  return (
+    <tr>
+      <td>{productState.titulo}</td>
+      <td>{productState.precio}</td>
+      <td>{productState.codigo}</td>
+      <td>
+        <img src={productState.imagen} alt="" width={"50"} />
+      </td>
+      <td className="d-flex">
+        <Button variant="warning me-2" onClick={handleShow}>
+          Editar
+        </Button>
+        <Button variant="danger" onClick={() => onDelete(productState._id)}>
+          Eliminar
+        </Button>
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Editar Productos</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Titulo</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="titulo"
+                  value={productState.titulo}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Precio</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="precio"
+                  value={productState.precio}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Codigo</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={productState.codigo}
+                  name="codigo"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Imagen</Form.Label>
+                <Form.Control type="file" onChange={handleImageChange} />
+              </Form.Group>
+
+              <Button variant="success" type="submit" onClick={handleSave}>
+                Guardar
+              </Button>
+            </Form>
+          </Modal.Body>
+        </Modal>
+      </td>
+    </tr>
+  );
+};
+
+const Footer = () => {
+  return (
+    <footer className="bg-light text-center py-3">© 2024 Tu Sitio Web</footer>
   );
 };
 
