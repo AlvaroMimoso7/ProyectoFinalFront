@@ -66,7 +66,7 @@ const NavbarC = () => {
         const createProd = await clienteAxios.post(
           "/products",
           data,
-          configHeaders
+          configHeaders()
         );
         if (createProd.status === 201) {
           Swal.fire({

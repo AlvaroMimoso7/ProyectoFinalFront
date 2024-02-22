@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const token = JSON.parse(sessionStorage.getItem("token")) || "";
+console.log(token);
 
 const clienteAxios = axios.create({
   baseURL: `${import.meta.env.VITE_URL_BACK}/api`,

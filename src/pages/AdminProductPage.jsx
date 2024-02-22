@@ -46,7 +46,7 @@ data.append('imagen', imagen)
       const updateProd = await clienteAxios.put(
         `/products/${productStates._id}`,
         data,
-        configHeaders
+        configHeaders()
       );
       if (updateProd.status === 200) {
         handleClose();
@@ -75,7 +75,7 @@ data.append('imagen', imagen)
         confirmButtonText: "Si, estoy seguro!",
       }).then(async (result) => {
         if (result.isConfirmed) {
-          const delProd = await clienteAxios.delete(`/products/${idProd}`);
+          const delProd = await clienteAxios.delete(`/products/${idProd}`,configHeaders());
           if (delProd.status === 200) {
             Swal.fire({
               title: "Producto eliminado correctamente!",

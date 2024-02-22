@@ -47,7 +47,7 @@ const AdminUserPage = () => {
           emailUsuario: userStates.emailUsuario,
           role: userStates.role,
         },
-        configHeaders
+        configHeaders()
       );
       if (updateProd.status === 200) {
         handleClose();
@@ -79,7 +79,7 @@ const AdminUserPage = () => {
         if (result.isConfirmed) {
           const delUser = await clienteAxios.delete(
             `/users/${idUser}`,
-            configHeaders
+            configHeaders()
           );
           if (delUser.status === 200) {
             Swal.fire({
