@@ -5,7 +5,8 @@ import Swal from "sweetalert2";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
 import "../css/Product.css";
 
-const ProductPage = () => {
+
+const ProductPage = ({setRefresh, refresh}) => {
   const params = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
@@ -75,7 +76,9 @@ const ProductPage = () => {
         );
         console.log(addFavResponse);
 
+        
         if (addFavResponse.status === 200) {
+          setRefresh(!refresh)
           Swal.fire({
             title: "Producto Añadido a Favoritos!",
             icon: "success",

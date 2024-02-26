@@ -13,7 +13,7 @@ const SobreNosotros = () => {
               <div className='body-1 mt-3'>
                 <img src="../src/img/alvaro.jpg" className='circular-name' width='100'></img>
                 <h5 className="text-white">Alvaro Mimoso</h5>
-                <p className="text-white">Mi nombre es Alvaro  Martin Mimoso, tengo 26  años ,soy estudiante de Educación Física me gusta el fútbol y también me interesa todo lo relacionado con computación.. </p>
+                <p className="text-white">Mi nombre es Alvaro  Martin Mimoso, tengo 26  años ,soy estudiante de Educación Física me gusta el fútbol y también me interesa todo lo relacionado con la computación.. </p>
               </div>
             </div>
             <div className="col-sm-12 col-md-6 col-lg-4">
@@ -28,13 +28,6 @@ const SobreNosotros = () => {
                 <img src="../src/img/gustavo.jpg" className='circular-name' width='100'></img>
                 <h5 className="text-white">Gustavo Bulacia</h5>
                 <p className="text-white">Tengo 41 años,soy estudiante de derechos y trabajo en el poder judicial en concepció.En mis tiempos libres me gusta ver peliculas ,leer y jugar al basket.</p>
-              </div>
-            </div>
-            <div className="col-sm-12 col-md-6 col-lg-4">
-              <div className='body-1 mt-3'>
-                <img src="../src/img/nacho.jpg" className='circular-name' width='100'></img>
-                <h5 className="text-white">Pablo Romero</h5>
-                <p className="text-white">Mi nombre es Pablo pero me  conocen más como nacho ,tengo 17 años y me gusta ir al gimnasio ,jugar en la computadora y me gusta pasar el tiempo con mis familiares,amigos y mi novia.</p>
               </div>
             </div>
             <div className="col-sm-12 col-md-6 col-lg-4">
