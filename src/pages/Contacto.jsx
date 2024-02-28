@@ -5,9 +5,11 @@ import Button from 'react-bootstrap/Button';
 import ImagenesC from '../Components/ImagenesC';
 import '../css/errorpage.css'
 
-const Contacto = () => {
+
+ const Contacto =() =>{
   return (
     <>
+
       <style>
         {`
           body {
@@ -21,6 +23,11 @@ const Contacto = () => {
           }
         `}
       </style>
+
+
+     
+
+
       <Container fluid className="mt-5 mb-5 p-5">
         <Row className="justify-content-center mt-5">
           <Col xs={12} lg={4} className="text-center mb-3 mb-lg-0">
@@ -34,18 +41,23 @@ const Contacto = () => {
             />
           </Col>
           <Col xs={12} lg={8}>
-            <Form>
+            <Form  >
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Nombre</Form.Label>
-                <Form.Control type="text" placeholder="Tu nombre" />
+                <Form.Control
+                 type="text" 
+                placeholder="Tu nombre"
+                 pattern='^[a-zA-Z]{3,}$'
+               required></Form.Control>
+               
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Correo Electronico</Form.Label>
-                <Form.Control type="email" placeholder="Ejemplo@dominio.com" />
+                <Form.Control type="email" placeholder="Ejemplo@dominio.com" pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' required />
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Escribe tu comentario</Form.Label>
-                <Form.Control as="textarea" rows={3} />
+                <Form.Control as="textarea" rows={3}  pattern='^[a-zA-Z]{3,}$' required />
               </Form.Group>
               <Button className='btn-enviar' type="submit">
                 Enviar

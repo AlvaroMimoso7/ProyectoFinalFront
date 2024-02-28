@@ -3,15 +3,38 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Swal from "sweetalert2";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
+
 import '../css/Register.css'
-const RegisterPage = () => {
+
+ 
+ const RegisterPage = () => {
+  
+
   const [formValues, setFormValues] = useState({
     user: "",
     email: "",
     pass: "",
     rpass: "",
   });
+
+  const [error,setError]= useState({
+    user: "",
+    email: "",
+    pass: "",
+    rpass: "",
+  });
+
+ 
   const handleChange = (ev) => {
+    if(ev.target.name==='user'){
+       setError({...error,user:''})
+    }if(ev.target.name==='email'){
+      setError({...error,email:''})
+    }if(ev.target.name==='pass'){
+      setError({...error,pass:''})
+    }if(ev.target.name==='rpass'){
+      setError({...error,rpass:''})
+    }
     setFormValues({ ...formValues, [ev.target.name]: ev.target.value });
   };
 
@@ -19,13 +42,27 @@ const RegisterPage = () => {
     try {
       ev.preventDefault();
       const { user, email, pass, rpass } = formValues;
-      if (!user && !email && !pass && !rpass) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Algun campo esta vacio!",
-        });
-      } else if (pass === rpass) {
+      let newError ={}
+
+      if(!user ){
+     newError ={...newError,user:'errorUser'}
+      } 
+      
+      if(!email ){
+        newError ={...newError,email:'errorEmail'}
+         }
+      if(!pass ){
+          newError ={...newError,pass:'errorPass'}
+           }
+       if(!rpass ){
+            newError ={...newError,rpass:'errorRpass'}
+             }
+      if(Object.keys(newError).length){
+        setError(newError)
+        return
+      }
+      
+        if (pass === rpass) {
         const sendForm = await clienteAxios.post(
           "/users",
           {
@@ -70,42 +107,42 @@ const RegisterPage = () => {
           <Form className="w-25">
             <Form.Group className="mb-2" controlId="formBasicEmail">
               <Form.Label className="text-center">Usuario</Form.Label>
-              <Form.Control className="form-1"
+              <Form.Control className={error.user === 'errorUser' ? "form-1 is-invalid" : 'form-1' }
                 type="text"
                 name="user"
-                value={formValues.user}
                 onChange={handleChange} 
                 placeholder ="EJ:usuario123"
               />
+            <p className="text-danger">{error.user === 'errorUser' && "campo de usuario vacio"  }</p>  
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail ">
               <Form.Label className="text-center ">Email del Usuario</Form.Label>
-              <Form.Control className="form-1"
+              <Form.Control className={error.email === 'errorEmail' ? "form-1 is-invalid" : 'form-1' }
                 type="text"
                 name="email"
-                value={formValues.email}
                 onChange={handleChange}
                 placeholder="EJ: email@dominio.com"
               />
+                <p className="text-danger">{error.email === 'errorEmail' && "campo de email vacio"  }</p> 
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword ">
               <Form.Label className="text-center">Contraseña</Form.Label>
-              <Form.Control className="form-1"
-                value={formValues.pass}
+              <Form.Control className={error.pass === 'errorPass' ? "form-1 is-invalid" : 'form-1' }
                 name="pass"
                 onChange={handleChange}
                 type="password"
               />
+              <p className="text-danger">{error.pass === 'errorPass' && "campo de contraseña vacio"  }</p> 
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label className="text-center">Repetir Contraseña</Form.Label>
-              <Form.Control className="form-1"
-                value={formValues.rpass}
+              <Form.Control className={error.rpass === 'errorRpass' ? "form-1 is-invalid" : 'form-1' }
                 name="rpass"
                 onChange={handleChange}
                 type="password"
               />
+                 <p className="text-danger">{error.rpass === 'errorRpass' && "campo de contraseña vacio"  }</p> 
             </Form.Group>
            
             <Button  className="btn-register " type="submit" onClick={handleClick}>
