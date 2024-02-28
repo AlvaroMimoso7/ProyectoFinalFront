@@ -26,7 +26,7 @@ const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage }) => {
   };
 
   return (
-    <Card style={{ width:"200 px", height:"100 px"}} className="mb-5">
+    <Card style={{ width: "18rem" }} className="mb-5">
     <Card.Img variant="top" src={url} className="object-fit-cover" />
     <Card.Body style={{ flex: 1, display: "flex", flexDirection: "column" }}>
       <Card.Title>{titulo}</Card.Title>
