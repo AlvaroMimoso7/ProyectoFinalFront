@@ -9,6 +9,8 @@ import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
+import Swal from "sweetalert2";
+
 
 const NavbarC = () => {
   const navigate = useNavigate();
@@ -60,11 +62,13 @@ const NavbarC = () => {
         data.append("precio", precio);
         data.append("codigo", codigo);
         data.append("imagen", imagen);
+        data.append("imagen", imagen);
+
 
         const createProd = await clienteAxios.post(
           "/products",
           data,
-          configHeaders
+          configHeaders()
         );
         if (createProd.status === 201) {
           Swal.fire({

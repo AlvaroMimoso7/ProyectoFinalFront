@@ -15,10 +15,13 @@ import AdminProductPage from "../pages/AdminProductPage";
 import FavPages from "../pages/FavPages";
 import CartPage from "../pages/CartPage";
 import PrivatesRoutes from "../Components/PrivatesRoutes";
+import { useState } from "react";
 
 const RoutesViews = () => {
+  const [refresh, setRefresh]= useState(false)
   return (
     <>
+
       <NavbarC />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -49,7 +52,7 @@ const RoutesViews = () => {
         } />
         <Route path="/fav" element={
           <PrivatesRoutes role='user'>
-            <FavPages />
+            <FavPages setRefresh={setRefresh} refresh={refresh}/>
           </PrivatesRoutes>
         } />
         <Route path="/cart" element={
@@ -59,7 +62,7 @@ const RoutesViews = () => {
         } />
 
         <Route path="/contacto" element={<Contacto />} />
-        <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/product/:id" element={<ProductPage />} setRefresh={setRefresh} refresh={refresh}/>
         <Route path="/sobre-nosotros" element={<SobreNosotros />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
