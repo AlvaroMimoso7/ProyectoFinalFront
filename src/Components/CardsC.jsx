@@ -18,6 +18,7 @@ const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage, onDelete }) =>
       }
     } catch (error) {
       console.log(error);
+
     }
   };
 

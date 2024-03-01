@@ -142,7 +142,7 @@ import '../css/Register.css'
                 onChange={handleChange}
                 type="password"
               />
-                 <p className="text-danger">{error.rpass === 'errorRpass' && "campo de contraseña vacio"  }</p> 
+                 <p className="text-danger">{error.rpass === 'errorRpass' && "campo  vacio"  }</p> 
             </Form.Group>
            
             <Button  className="btn-register " type="submit" onClick={handleClick}>
