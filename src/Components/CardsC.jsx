@@ -18,27 +18,30 @@ const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage, onDelete }) =>
       }
     } catch (error) {
       console.log(error);
+
     }
   };
 
   return (
-    <Card style={{ width: "18rem" }} className="mb-5">
-      <Card.Img variant="top" src={url} className="object-fit-cover" />
-      <Card.Body style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-        <Card.Title>{titulo}</Card.Title>
-        <Card.Text>{precio}</Card.Text>
-        <Card.Text style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{codigo}</Card.Text>
-        {idPage === "FavPage" ? (
-          <button className="btn btn-danger" onClick={deleteProdFav}>
-            Eliminar
-          </button>
-        ) : (
-          <a href={`/product/${idProduct}`} className="btn btn-cards">
-            Ver mas
-          </a>
-        )}
-      </Card.Body>
-    </Card>
+    <Card style={{ width:"18rem"}} className="mb-5">
+    <Card.Img variant="top" src={url} className="object-fit-cover" />
+    <Card.Body style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+      <Card.Title>{titulo}</Card.Title>
+      <Card.Text >{precio}</Card.Text>
+      <Card.Text style={{whiteSpace: 'nowrap', 
+  overflow: 'hidden',
+  textOverflow: 'ellipsis'}}>{codigo}</Card.Text>
+      {idPage === "FavPage" ? (
+        <Link to={`#`} className="btn btn-danger" onClick={deleteProdFav}>
+          Eliminar
+        </Link>
+      ) : (
+        <Link to={`/product/${idProduct}`} className="btn btn-cards">
+          Ver mas
+        </Link>
+      )}
+    </Card.Body>
+  </Card>
   );
 };
 
