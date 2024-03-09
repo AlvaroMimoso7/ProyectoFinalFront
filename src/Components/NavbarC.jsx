@@ -62,9 +62,7 @@ const NavbarC = () => {
         data.append("precio", precio);
         data.append("codigo", codigo);
         data.append("imagen", imagen);
-        data.append("imagen", imagen);
-
-
+        
         const createProd = await clienteAxios.post(
           "/products",
           data,

@@ -74,15 +74,17 @@ const ProductPage = ({setRefresh, refresh}) => {
           {},
           configHeaders()
         );
-        console.log(addFavResponse);
+        console.log(addFavResponse.status===200);
 
         
         if (addFavResponse.status === 200) {
-          setRefresh(!refresh)
+          
+
           Swal.fire({
             title: "Producto Añadido a Favoritos!",
             icon: "success",
           });
+          setRefresh(!refresh)
         } else {
           console.log(addFavResponse.status);
         }
