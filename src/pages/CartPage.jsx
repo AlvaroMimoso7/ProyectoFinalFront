@@ -9,7 +9,8 @@ const CartPage = () => {
   const getProdCart = async () => {
     try {
       const carts = await clienteAxios.get(`/carts`, configHeaders());
-      setCarrito(carts.data.getCarts[0].productos);
+     setCarrito(carts.data.getCarts[1].productos);
+     console.log
     } catch (error) {
       console.log(error);
     }
