@@ -5,17 +5,28 @@ import clienteAxios, { configHeaders } from "../helpers/clientAxios";
 import Swal from "sweetalert2";
 import "../css/CardsC.css";
 
-const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage, onDelete }) => {
+const CardsC = ({
+  url,
+  titulo,
+  precio,
+  codigo,
+  idProduct,
+  idPage,
+  onDelete,
+}) => {
   const deleteProdFav = async () => {
     try {
-      const data = await clienteAxios.delete(`/favs/${idProduct}`, configHeaders());
+      const data = await clienteAxios.delete(
+        `/favs/${idProduct}`,
+        configHeaders()
+      );
       if (data.status === 200) {
         Swal.fire({
           title: "Tu producto ha sido eliminado de Favoritos!",
           icon: "success",
         });
-        
-        onDelete(idProduct); 
+
+        onDelete(idProduct);
       }
     } catch (error) {
       console.log(error);
@@ -28,7 +39,13 @@ const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage, onDelete }) =>
       <Card.Body style={{ flex: 1, display: "flex", flexDirection: "column" }}>
         <Card.Title>{titulo}</Card.Title>
         <Card.Text>{precio}</Card.Text>
-        <Card.Text style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+        <Card.Text
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
           {codigo}
         </Card.Text>
         {idPage === "FavPage" ? (
@@ -46,6 +63,3 @@ const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage, onDelete }) =>
 };
 
 export default CardsC;
-
-
-

@@ -70,7 +70,7 @@ import '../css/Register.css'
             emailUsuario: email,
             contrasenia: pass,
           },
-          configHeaders
+          configHeaders()
         );
         if (sendForm.status === 201) {
           Swal.fire({

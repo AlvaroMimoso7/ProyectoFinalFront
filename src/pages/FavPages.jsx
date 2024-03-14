@@ -31,7 +31,9 @@ const FavPages = ({ refresh, setRefresh }) => {
   }, [refresh]);
 
   useEffect(() => {
-    setRefresh((prevRefresh) => !prevRefresh);
+    if (favoritos.length > 0) {
+      setRefresh(true); // Solo actualizar refresh si favoritos se ha cargado
+    }
   }, [favoritos, setRefresh]);
 
   return (
