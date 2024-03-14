@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
 import Swal from "sweetalert2";
 import "../css/CardsC.css";
+import { Link } from "react-router-dom";
 
 const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage, onDelete }) => {
   const deleteProdFav = async () => {
@@ -13,8 +14,8 @@ const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage, onDelete }) =>
           title: "Tu producto ha sido eliminado de Favoritos!",
           icon: "success",
         });
-        
-        onDelete(idProduct); 
+
+        onDelete(idProduct);
       }
     } catch (error) {
       console.log(error);
@@ -27,15 +28,25 @@ const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage, onDelete }) =>
       <Card.Body style={{ flex: 1, display: "flex", flexDirection: "column" }}>
         <Card.Title>{titulo}</Card.Title>
         <Card.Text>{precio}</Card.Text>
-        <Card.Text style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{codigo}</Card.Text>
+        <Card.Text
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {codigo}
+        </Card.Text>
         {idPage === "FavPage" ? (
           <button className="btn btn-danger" onClick={deleteProdFav}>
             Eliminar
           </button>
         ) : (
-          <a href={`/product/${idProduct}`} className="btn btn-cards">
-            Ver mas
-          </a>
+          <Link to={`/product/${idProduct}`} className="btn btn-cards">
+
+          Ver mas
+        </Link>
+      
         )}
       </Card.Body>
     </Card>
