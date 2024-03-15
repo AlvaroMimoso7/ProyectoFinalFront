@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom"; // Asegúrate de importar Link desde react-router-dom
+import { Link } from "react-router-dom"; // Importa Link una sola vez
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
 import Swal from "sweetalert2";
 import "../css/CardsC.css";
