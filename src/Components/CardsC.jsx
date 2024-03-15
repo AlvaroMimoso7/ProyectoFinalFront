@@ -1,14 +1,25 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom"; // Importa Link una sola vez
 import clienteAxios, { configHeaders } from "../helpers/clientAxios";
 import Swal from "sweetalert2";
 import "../css/CardsC.css";
-import { Link } from "react-router-dom";
 
-const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage, onDelete }) => {
+const CardsC = ({
+  url,
+  titulo,
+  precio,
+  codigo,
+  idProduct,
+  idPage,
+  onDelete,
+}) => {
   const deleteProdFav = async () => {
     try {
-      const data = await clienteAxios.delete(`/favs/${idProduct}`, configHeaders());
+      const data = await clienteAxios.delete(
+        `/favs/${idProduct}`,
+        configHeaders()
+      );
       if (data.status === 200) {
         Swal.fire({
           title: "Tu producto ha sido eliminado de Favoritos!",
@@ -38,15 +49,13 @@ const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage, onDelete }) =>
           {codigo}
         </Card.Text>
         {idPage === "FavPage" ? (
-          <button className="btn btn-danger" onClick={deleteProdFav}>
+          <Link to="#" className="btn btn-danger" onClick={deleteProdFav}>
             Eliminar
-          </button>
+          </Link>
         ) : (
           <Link to={`/product/${idProduct}`} className="btn btn-cards">
-
-          Ver mas
-        </Link>
-      
+            Ver mas
+          </Link>
         )}
       </Card.Body>
     </Card>
@@ -54,5 +63,3 @@ const CardsC = ({ url, titulo, precio, codigo, idProduct, idPage, onDelete }) =>
 };
 
 export default CardsC;
-
-

@@ -44,7 +44,7 @@ const CartPage = () => {
   }, []);
 
   return (
-    <>
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <div className="d-flex justify-content-center my-5">
         <Table striped bordered hover className="w-50">
           <thead>
@@ -95,8 +95,11 @@ const CartPage = () => {
           </tbody>
         </Table>
       </div>
-    </>
+      <footer style={{ marginTop: "auto", backgroundColor: "#f8f9fa", padding: "20px", textAlign: "center" }}>
+      </footer>
+    </div>
   );
 };
 
 export default CartPage;
+
